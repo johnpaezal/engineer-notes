@@ -1,0 +1,44 @@
+# ============================================================
+# PLANTILLA DE TARJETAS ANKI
+# Este archivo define el formato para todos los .txt de Anki.
+# Consultar este archivo como referencia antes de generar tarjetas.
+# ============================================================
+#separator:Tab
+#html:true
+#deck column:1
+#notetype column:2
+
+# FORMATO DE CADA LINEA:
+# Mazo::Submazo	MiPlantilla	Frente	Reverso
+
+# ============================================================
+# SUBMAZO: Filosofia::Introduccion
+# ============================================================
+
+# Texto corto
+Filosofia::Introduccion	MiPlantilla	¿Que es la filosofia?	Es el estudio de las preguntas fundamentales sobre la existencia, el conocimiento, la moral y la razon.
+Filosofia::Introduccion	MiPlantilla	¿Cual es el objetivo de la filosofia?	No da respuestas definitivas, busca formular mejores preguntas.
+
+# Frase corta + lista
+Filosofia::Introduccion	MiPlantilla	¿Cuales son las ramas principales de la filosofia?	La filosofia tiene 4 ramas principales:<ul><li>Metafisica</li><li>Epistemologia</li><li>Etica</li><li>Logica</li></ul>
+
+# Lista de puntos
+Filosofia::Introduccion	MiPlantilla	¿Que estudia cada rama de la filosofia?	<ul><li>Metafisica: la naturaleza de la realidad y el ser</li><li>Epistemologia: el conocimiento y como lo adquirimos</li><li>Etica: la moral y como debemos actuar</li><li>Logica: el razonamiento valido</li></ul>
+
+# Tabla
+Filosofia::Introduccion	MiPlantilla	¿Cual es la diferencia entre filosofia y ciencia?	<table border="1" cellpadding="6"><tr><th>Filosofia</th><th>Ciencia</th></tr><tr><td>Pregunta por que importa que funcionen las cosas</td><td>Responde como funcionan las cosas</td></tr><tr><td>Busca formular preguntas</td><td>Busca dar respuestas</td></tr></table>
+
+# ============================================================
+# SUBMAZO: Filosofia::Socrates
+# ============================================================
+
+# Texto corto
+Filosofia::Socrates	MiPlantilla	¿Por que conocemos a Socrates a traves de Platon?	Porque Socrates no escribio nada, todo lo que sabemos de el viene de los escritos de Platon.
+Filosofia::Socrates	MiPlantilla	¿En que consiste el metodo socratico?	En hacer preguntas para llevar al interlocutor a contradicciones y asi revisar sus creencias.
+Filosofia::Socrates	MiPlantilla	¿Que significa "solo se que no se nada"?	Que reconocer la propia ignorancia es el primer paso del conocimiento.
+
+# Frase corta + lista
+Filosofia::Socrates	MiPlantilla	¿Que representa el mito de la caverna de Platon?	Platon describe prisioneros que solo ven sombras y las toman por realidad:<ul><li>Las sombras: el mundo sensible (lo que percibimos)</li><li>El sol afuera: el mundo de las ideas (la verdad)</li></ul>
+
+# Tabla
+Filosofia::Socrates	MiPlantilla	¿Cual es la diferencia entre Platon y Aristoteles?	<table border="1" cellpadding="6"><tr><th>Platon</th><th>Aristoteles</th></tr><tr><td>La realidad esta en el mundo de las ideas</td><td>La realidad esta en las cosas mismas</td></tr><tr><td>Maestro</td><td>Alumno que rechazo la teoria de las ideas</td></tr></table>

@@ -417,3 +417,75 @@ Antes de entregar las notas, verificar:
 - [ ] README con tabla por grupo y descripción en cursiva
 
 **Regla de oro**: Si algo puede explicarse en menos palabras, hazlo.
+
+---
+
+## MAZOS DE ANKI
+
+### Formato general
+
+Los mazos de Anki se guardan como archivos `.txt` en la raíz del proyecto con el nombre `anki-<tema>.txt`.
+
+La plantilla de referencia con ejemplos está en `.claude/PLANTILLA_ANKI.txt`.
+
+Cada línea sigue este formato (separado por Tab):
+
+```
+Mazo::Submazo	MiPlantilla	Frente	Reverso
+```
+
+El archivo debe empezar con:
+
+```
+#separator:Tab
+#html:true
+#deck column:1
+#notetype column:2
+```
+
+### Estructura de mazos
+
+- **Mazo principal**: nombre del proyecto o área (ej. `AwsEngineer`)
+- **Submazos**: `Mazo::Area::Tema::Subtema` (ej. `AwsEngineer::BaseDatos::SQL::Indexes`)
+- **Profundidad**: la que necesite el tema — sin límite fijo
+
+### Tipos de respuesta — variar según el contenido
+
+El HTML se escribe inline en la columna del reverso. Mezclar tipos según lo que se enseña:
+
+**Texto corto** — para definiciones y conceptos simples:
+```
+¿Qué es X?	Definición breve en una o dos líneas.
+```
+
+**Lista** — para enumeraciones y pilares:
+```
+¿Cuáles son los X?	<ul><li><b>A</b> – descripción</li><li><b>B</b> – descripción</li></ul>
+```
+
+**Tabla** — para comparaciones entre dos o más cosas:
+```
+¿Diferencia entre X e Y?	<table border="1" cellpadding="6"><tr><th>X</th><th>Y</th></tr><tr><td>...</td><td>...</td></tr></table>
+```
+
+**Código inline** — para sintaxis y comandos:
+```
+¿Cómo se hace X en Python?	<pre>código aquí</pre>
+```
+
+### Reglas para las tarjetas
+
+- **Frente**: pregunta directa, breve, con `¿...?`
+- **Reverso**: respuesta mínima — solo lo esencial, sin contexto extra
+- Una idea por tarjeta
+- Variar los tipos de respuesta para que el repaso sea dinámico
+- No poner detalles muy específicos — solo lo que hay que tener claro para entender el concepto
+
+### Flujo por defecto
+
+Cada vez que el usuario pide crear o agregar un tema:
+
+1. Crear/actualizar la nota `.md` con el contenido
+2. Inmediatamente después, agregar las tarjetas Anki correspondientes al archivo `anki-aws-engineer.txt`
+
+Esto es automático — no esperar a que el usuario lo pida por separado.

@@ -5,6 +5,28 @@ Conseguir un puesto como **AWS Engineer** con perfil full-stack backend.
 
 ---
 
+## Stage 0 — Ingeniería de Software (Transversal)
+*Conceptos que aplican a todo lo demás*
+
+- [x] **SDLC (Software Development Lifecycle)** → `00-software-engineering/01-process/sdlc.md`
+- [x] **Requirements & User Stories** → `00-software-engineering/01-process/requirements.md`
+- [x] **Scrum & Plataformas** → `00-software-engineering/01-process/scrum.md`
+- [x] **REST API Design** → `00-software-engineering/02-design/rest-api.md`
+- [x] **Design Patterns + MVC** → `00-software-engineering/02-design/design-patterns.md`
+- [x] **Clean Code** → `00-software-engineering/02-design/clean-code.md`
+- [x] **Architecture** → `00-software-engineering/03-architecture/`
+  - Styles, Components, Diagrams, Patterns, Scalability
+- [x] **Testing** → `00-software-engineering/04-quality/testing.md`
+- [x] **Security – OWASP** → `00-software-engineering/04-quality/security-owasp.md`
+- [x] **Observability** → `00-software-engineering/04-quality/observability.md`
+- [x] **DevOps & CI/CD** → `00-software-engineering/05-delivery/devops-cicd.md`
+- [x] **IaC & Terraform** → `00-software-engineering/05-delivery/iac-terraform.md`
+- [x] **Git Workflow** → `00-software-engineering/05-delivery/git-workflow.md`
+- [x] **Message Queues** → `00-software-engineering/06-communication/message-queues.md`
+- [x] **Documentation** → `00-software-engineering/06-communication/documentation.md`
+
+---
+
 ## Stage 1 — Fundamentos (Base de todo)
 *Sin esto, nada de lo demás tiene sentido*
 
@@ -12,8 +34,8 @@ Conseguir un puesto como **AWS Engineer** con perfil full-stack backend.
   - Comandos esenciales, permisos, procesos, systemd
 - [ ] **Bash** → `02-infrastructure/bash/`
   - Scripts, variables, condicionales, loops, cron
-- [ ] **Redes básicas** → `02-infrastructure/networking/`
-  - IP, DNS, HTTP/HTTPS, TCP/UDP, puertos
+- [x] **Redes básicas** → `02-infrastructure/networking/`
+  - Fundamentos, OSI, TCP/IP, IP+Subnets, DNS, HTTP/HTTPS, Puertos, Seguridad
 - [ ] **Git + GitHub** → `05-tooling/git/`
   - Commits, branches, merge, rebase, pull requests
 - [ ] **JSON / YAML** → `05-tooling/json-yaml/`
@@ -50,9 +72,12 @@ Conseguir un puesto como **AWS Engineer** con perfil full-stack backend.
 ## Stage 4 — Bases de Datos
 *Persistencia de datos*
 
-- [ ] **SQL** → `03-databases/sql/` (notas básicas existentes)
-  - Joins, índices, transacciones, optimización
-- [ ] **NoSQL básico** → (DynamoDB en Stage 5)
+- [x] **SQL** → `03-databases/sql/`
+  - Fundamentals, queries, joins, indexes, transactions, views, normalization
+- [x] **Data Modeling** → `03-databases/data-modeling/`
+  - ER diagrams, relationships, normalization, schema patterns
+- [x] **NoSQL** → `03-databases/nosql/`
+  - DynamoDB, Redis, MongoDB overview, when to use each
 
 ---
 
@@ -153,9 +178,23 @@ Conseguir un puesto como **AWS Engineer** con perfil full-stack backend.
 
 | Stage | Tema | Estado |
 |---|---|---|
+| 0 | Requirements & User Stories | ✅ Notas completas |
+| 0 | Scrum & Plataformas | ✅ Notas completas |
+| 0 | REST API Design | ✅ Notas completas |
+| 0 | Design Patterns + MVC | ✅ Notas completas |
+| 0 | Testing | ✅ Notas completas |
+| 0 | DevOps & CI/CD | ✅ Notas completas |
+| 0 | IaC & Terraform (conceptos) | ✅ Notas completas |
+| 0 | Clean Code | ✅ Notas completas |
+| 0 | Git Workflow | ✅ Notas completas |
+| 0 | Security – OWASP | ✅ Notas completas |
+| 0 | Observability | ✅ Notas completas |
+| 0 | Documentation | ✅ Notas completas |
+| 0 | Message Queues | ✅ Notas completas |
+| 0 | Architecture | ✅ Notas completas |
 | 1 | Linux | ⬜ Pendiente |
 | 1 | Bash | ⬜ Pendiente |
-| 1 | Redes | ⬜ Pendiente |
+| 1 | Redes | ✅ Notas completas |
 | 1 | Git | ⬜ Pendiente |
 | 1 | JSON/YAML | ⬜ Pendiente |
 | 2 | Docker | ⬜ Pendiente |
@@ -165,7 +204,9 @@ Conseguir un puesto como **AWS Engineer** con perfil full-stack backend.
 | 3 | FastAPI | ⬜ Pendiente |
 | 3 | Java | ✅ Notas completas |
 | 3 | Spring Boot | ⬜ Pendiente |
-| 4 | SQL | 🔶 Básico |
+| 4 | SQL | ✅ Notas completas |
+| 4 | Data Modeling | ✅ Notas completas |
+| 4 | NoSQL (DynamoDB, Redis) | ✅ Notas completas |
 | 5 | AWS Core | ⬜ Pendiente |
 | 6 | Terraform | ⬜ Pendiente |
 | 6 | CDK | ⬜ Pendiente |

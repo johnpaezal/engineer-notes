@@ -1,0 +1,203 @@
+#separator:Tab
+#html:true
+#deck column:1
+#notetype column:2
+
+# ============================================================
+# MAZO: AwsEngineer
+# Temas: Software Engineering, Redes, Bases de Datos, Python, Flask
+# ============================================================
+
+# ============================================================
+# SUBMAZO: AwsEngineer::SoftwareEngineering::RequirementsScrum
+# ============================================================
+
+AwsEngineer::SoftwareEngineering::RequirementsScrum	MiPlantilla	¿Cuál es el formato de una User Story?	<b>As a</b> [usuario], <b>I want</b> [accion], <b>so that</b> [beneficio].
+AwsEngineer::SoftwareEngineering::RequirementsScrum	MiPlantilla	¿Qué significa INVEST en User Stories?	<ul><li><b>I</b>ndependent</li><li><b>N</b>egotiable</li><li><b>V</b>aluable</li><li><b>E</b>stimable</li><li><b>S</b>mall</li><li><b>T</b>estable</li></ul>
+AwsEngineer::SoftwareEngineering::RequirementsScrum	MiPlantilla	¿Cuáles son los 3 roles de Scrum?	<ul><li><b>Product Owner</b> – define qué construir</li><li><b>Scrum Master</b> – facilita el proceso</li><li><b>Dev Team</b> – construye el producto</li></ul>
+AwsEngineer::SoftwareEngineering::RequirementsScrum	MiPlantilla	¿Cuáles son las 4 ceremonias de Scrum?	<ul><li><b>Sprint Planning</b> – qué hacer en el sprint</li><li><b>Daily Standup</b> – sincronización diaria</li><li><b>Sprint Review</b> – demo del sprint</li><li><b>Retrospective</b> – mejorar el proceso</li></ul>
+AwsEngineer::SoftwareEngineering::RequirementsScrum	MiPlantilla	¿Qué es el Definition of Done (DoD)?	Lista de criterios que debe cumplir una tarea para considerarse terminada. Ej: código revisado, tests pasando, desplegado.
+
+# ============================================================
+# SUBMAZO: AwsEngineer::SoftwareEngineering::RestAPI
+# ============================================================
+
+AwsEngineer::SoftwareEngineering::RestAPI	MiPlantilla	¿Cuáles son los métodos HTTP y qué hacen?	<table border="1" cellpadding="6"><tr><th>Método</th><th>Acción</th></tr><tr><td>GET</td><td>Leer</td></tr><tr><td>POST</td><td>Crear</td></tr><tr><td>PUT</td><td>Reemplazar</td></tr><tr><td>PATCH</td><td>Actualizar parcial</td></tr><tr><td>DELETE</td><td>Eliminar</td></tr></table>
+AwsEngineer::SoftwareEngineering::RestAPI	MiPlantilla	¿Qué significan los grupos de status codes HTTP?	<ul><li><b>2xx</b> – Éxito (200 OK, 201 Created, 204 No Content)</li><li><b>4xx</b> – Error del cliente (400, 401, 403, 404, 422)</li><li><b>5xx</b> – Error del servidor (500, 503)</li></ul>
+AwsEngineer::SoftwareEngineering::RestAPI	MiPlantilla	¿Cuál es la diferencia entre 401 y 403?	<ul><li><b>401 Unauthorized</b> – No estás autenticado (no has hecho login)</li><li><b>403 Forbidden</b> – Estás autenticado pero no tienes permiso</li></ul>
+AwsEngineer::SoftwareEngineering::RestAPI	MiPlantilla	¿Cómo se diseñan URLs RESTful correctamente?	URLs son <b>sustantivos en plural</b>, los métodos HTTP son los verbos.<br><br>✅ <code>GET /users/5</code><br>❌ <code>GET /getUserById/5</code>
+AwsEngineer::SoftwareEngineering::RestAPI	MiPlantilla	¿Cuál es la diferencia entre REST y GraphQL?	<table border="1" cellpadding="6"><tr><th>REST</th><th>GraphQL</th></tr><tr><td>Múltiples endpoints</td><td>Un solo endpoint /graphql</td></tr><tr><td>Servidor define qué devuelve</td><td>Cliente define qué necesita</td></tr><tr><td>Over/under-fetching</td><td>Exactamente lo que pides</td></tr></table>
+AwsEngineer::SoftwareEngineering::RestAPI	MiPlantilla	¿Cuándo usar GraphQL en vez de REST?	GraphQL es mejor cuando tienes <b>múltiples clientes</b> (web, móvil) que necesitan datos distintos del mismo recurso. REST es mejor para APIs simples y públicas.
+
+# ============================================================
+# SUBMAZO: AwsEngineer::SoftwareEngineering::DesignPatterns
+# ============================================================
+
+AwsEngineer::SoftwareEngineering::DesignPatterns	MiPlantilla	¿Cuáles son las 3 categorías de Design Patterns (GoF)?	<ul><li><b>Creational</b> – cómo se crean objetos (Singleton, Factory, Builder)</li><li><b>Structural</b> – cómo se componen (Adapter, Decorator)</li><li><b>Behavioral</b> – cómo se comunican (Strategy, Observer)</li></ul>
+AwsEngineer::SoftwareEngineering::DesignPatterns	MiPlantilla	¿Qué hace el patrón Singleton?	Garantiza que solo exista <b>una instancia</b> de la clase en todo el sistema. Ej: conexión a base de datos.
+AwsEngineer::SoftwareEngineering::DesignPatterns	MiPlantilla	¿Qué hace el patrón Factory?	Crea objetos sin especificar la clase exacta. El cliente pide un tipo y el factory decide qué clase instanciar.
+AwsEngineer::SoftwareEngineering::DesignPatterns	MiPlantilla	¿Qué hace el patrón Strategy?	Permite <b>intercambiar algoritmos en tiempo de ejecución</b> sin cambiar el código que los usa.
+AwsEngineer::SoftwareEngineering::DesignPatterns	MiPlantilla	¿Qué hace el patrón Observer?	Un objeto (emitter) notifica automáticamente a varios objetos suscritos cuando su estado cambia. Ej: eventos, pub/sub.
+AwsEngineer::SoftwareEngineering::DesignPatterns	MiPlantilla	¿Qué significa cada letra de SOLID?	<ul><li><b>S</b> – Single Responsibility: una clase, un propósito</li><li><b>O</b> – Open/Closed: abierto para extender, cerrado para modificar</li><li><b>L</b> – Liskov: las subclases deben poder reemplazar a la clase padre</li><li><b>I</b> – Interface Segregation: interfaces específicas, no generales</li><li><b>D</b> – Dependency Inversion: depender de abstracciones, no de implementaciones</li></ul>
+AwsEngineer::SoftwareEngineering::DesignPatterns	MiPlantilla	¿Cuál es la diferencia entre MVC, MVP y MVVM?	<table border="1" cellpadding="6"><tr><th>Patrón</th><th>Uso típico</th></tr><tr><td>MVC</td><td>Web backends (Django, Spring)</td></tr><tr><td>MVP</td><td>Android clásico</td></tr><tr><td>MVVM</td><td>Frontend (Angular, React con hooks)</td></tr></table>
+
+# ============================================================
+# SUBMAZO: AwsEngineer::SoftwareEngineering::Testing
+# ============================================================
+
+AwsEngineer::SoftwareEngineering::Testing	MiPlantilla	¿Cuáles son los 3 niveles de la pirámide de testing?	<ul><li><b>Unit</b> – función individual, rápido, muchos</li><li><b>Integration</b> – varios componentes juntos</li><li><b>E2E</b> – flujo completo de usuario, lento, pocos</li></ul>
+AwsEngineer::SoftwareEngineering::Testing	MiPlantilla	¿Qué significa el patrón AAA en tests?	<ul><li><b>Arrange</b> – preparar datos y dependencias</li><li><b>Act</b> – ejecutar la función</li><li><b>Assert</b> – verificar el resultado</li></ul>
+AwsEngineer::SoftwareEngineering::Testing	MiPlantilla	¿Qué es un mock?	Un objeto falso que simula el comportamiento de una dependencia real (DB, API externa) para aislar el código que se está probando.
+
+# ============================================================
+# SUBMAZO: AwsEngineer::SoftwareEngineering::DevOps
+# ============================================================
+
+AwsEngineer::SoftwareEngineering::DevOps	MiPlantilla	¿Cuál es la diferencia entre CI y CD?	<ul><li><b>CI (Continuous Integration)</b> – integrar y testear código automáticamente en cada push</li><li><b>CD (Continuous Delivery/Deployment)</b> – desplegar automáticamente si los tests pasan</li></ul>
+AwsEngineer::SoftwareEngineering::DevOps	MiPlantilla	¿Cuáles son las etapas típicas de un pipeline CI/CD?	Build → Test → Lint → Security scan → Deploy a staging → Deploy a prod
+AwsEngineer::SoftwareEngineering::DevOps	MiPlantilla	¿Cuál es la diferencia entre Blue/Green y Canary deployment?	<table border="1" cellpadding="6"><tr><th>Blue/Green</th><th>Canary</th></tr><tr><td>Switch completo entre dos entornos</td><td>Rollout gradual (5% → 50% → 100%)</td></tr><tr><td>Rollback instantáneo</td><td>Rollback controlado</td></tr></table>
+
+# ============================================================
+# SUBMAZO: AwsEngineer::SoftwareEngineering::IaC
+# ============================================================
+
+AwsEngineer::SoftwareEngineering::IaC	MiPlantilla	¿Qué es Infrastructure as Code (IaC)?	Gestionar infraestructura (servidores, redes, DBs) usando archivos de código en lugar de hacerlo manualmente.
+AwsEngineer::SoftwareEngineering::IaC	MiPlantilla	¿Cuáles son los 4 comandos principales de Terraform?	<ul><li><code>terraform init</code> – inicializar proyecto</li><li><code>terraform plan</code> – previsualizar cambios</li><li><code>terraform apply</code> – aplicar cambios</li><li><code>terraform destroy</code> – eliminar infraestructura</li></ul>
+AwsEngineer::SoftwareEngineering::IaC	MiPlantilla	¿Qué es el terraform state?	Archivo que guarda el estado actual de la infraestructura. Terraform lo compara con el código para saber qué crear, modificar o eliminar.
+
+# ============================================================
+# SUBMAZO: AwsEngineer::SoftwareEngineering::CleanCode
+# ============================================================
+
+AwsEngineer::SoftwareEngineering::CleanCode	MiPlantilla	¿Qué significan DRY, KISS y YAGNI?	<ul><li><b>DRY</b> – Don't Repeat Yourself: no duplicar lógica</li><li><b>KISS</b> – Keep It Simple: solución más simple que funcione</li><li><b>YAGNI</b> – You Aren't Gonna Need It: no construir lo que no se necesita ahora</li></ul>
+AwsEngineer::SoftwareEngineering::CleanCode	MiPlantilla	¿Cuáles son las reglas principales para nombres en Clean Code?	<ul><li>Nombres que revelen intención: <code>getUserById</code> no <code>getU</code></li><li>Sin abreviaciones crípticas</li><li>Verbos para funciones, sustantivos para clases</li><li>Sin números mágicos: usa constantes con nombre</li></ul>
+
+# ============================================================
+# SUBMAZO: AwsEngineer::SoftwareEngineering::GitWorkflow
+# ============================================================
+
+AwsEngineer::SoftwareEngineering::GitWorkflow	MiPlantilla	¿Cuál es la diferencia entre Gitflow y Trunk-Based Development?	<table border="1" cellpadding="6"><tr><th>Gitflow</th><th>Trunk-Based</th></tr><tr><td>Ramas long-lived (develop, release)</td><td>Todos en main, ramas cortas (1-2 días)</td></tr><tr><td>Releases programados</td><td>Deploy continuo</td></tr></table>
+AwsEngineer::SoftwareEngineering::GitWorkflow	MiPlantilla	¿Cuál es el formato de Conventional Commits?	<code>type(scope): descripción</code><br><br>Ej: <code>feat(auth): add JWT login</code><br><code>fix(api): handle null response</code>
+AwsEngineer::SoftwareEngineering::GitWorkflow	MiPlantilla	¿Qué significan los números en SemVer (1.2.3)?	<ul><li><b>1</b> (MAJOR) – cambio que rompe compatibilidad</li><li><b>2</b> (MINOR) – nueva feature compatible</li><li><b>3</b> (PATCH) – bug fix compatible</li></ul>
+AwsEngineer::SoftwareEngineering::GitWorkflow	MiPlantilla	¿Cuál es la diferencia entre Monorepo y Multirepo?	<table border="1" cellpadding="6"><tr><th>Monorepo</th><th>Multirepo</th></tr><tr><td>Todos los servicios en un repo</td><td>Un repo por servicio</td></tr><tr><td>Cambios atómicos cross-service</td><td>Equipos totalmente autónomos</td></tr></table>
+
+# ============================================================
+# SUBMAZO: AwsEngineer::SoftwareEngineering::Security
+# ============================================================
+
+AwsEngineer::SoftwareEngineering::Security	MiPlantilla	¿Qué es SQL Injection y cómo se previene?	Inyección de SQL malicioso en inputs del usuario.<br><br>✅ Usar <b>prepared statements / queries parametrizadas</b>, nunca concatenar strings con input del usuario.
+AwsEngineer::SoftwareEngineering::Security	MiPlantilla	¿Cuál es la diferencia entre autenticación y autorización?	<ul><li><b>Autenticación</b> – ¿quién eres? (login, JWT)</li><li><b>Autorización</b> – ¿qué puedes hacer? (roles, permisos)</li></ul>
+AwsEngineer::SoftwareEngineering::Security	MiPlantilla	¿Qué es XSS y cómo se previene?	Cross-Site Scripting: inyección de JS malicioso en páginas web.<br><br>✅ Escapar HTML en outputs, usar Content-Security-Policy header.
+AwsEngineer::SoftwareEngineering::Security	MiPlantilla	¿Cuáles son los headers de seguridad más importantes?	<ul><li><code>Content-Security-Policy</code> – previene XSS</li><li><code>X-Frame-Options: DENY</code> – previene clickjacking</li><li><code>Strict-Transport-Security</code> – fuerza HTTPS</li></ul>
+
+# ============================================================
+# SUBMAZO: AwsEngineer::SoftwareEngineering::Observability
+# ============================================================
+
+AwsEngineer::SoftwareEngineering::Observability	MiPlantilla	¿Cuáles son los 3 pilares de Observability?	<ul><li><b>Logs</b> – eventos discretos con contexto</li><li><b>Metrics</b> – valores numéricos en el tiempo (CPU, requests/s)</li><li><b>Traces</b> – seguimiento de una request a través de servicios</li></ul>
+AwsEngineer::SoftwareEngineering::Observability	MiPlantilla	¿Qué significan los niveles de log?	<ul><li><b>DEBUG</b> – desarrollo, muy detallado</li><li><b>INFO</b> – flujo normal</li><li><b>WARN</b> – algo inesperado pero no roto</li><li><b>ERROR</b> – algo falló</li><li><b>CRITICAL</b> – sistema comprometido</li></ul>
+AwsEngineer::SoftwareEngineering::Observability	MiPlantilla	¿Qué es el método RED para métricas?	<ul><li><b>R</b>ate – requests por segundo</li><li><b>E</b>rrors – tasa de errores</li><li><b>D</b>uration – latencia de las requests</li></ul>
+
+# ============================================================
+# SUBMAZO: AwsEngineer::SoftwareEngineering::MessageQueues
+# ============================================================
+
+AwsEngineer::SoftwareEngineering::MessageQueues	MiPlantilla	¿Cuáles son los 3 actores de un sistema de colas?	<ul><li><b>Producer</b> – envía mensajes</li><li><b>Broker</b> – almacena y enruta mensajes (SQS, Kafka)</li><li><b>Consumer</b> – procesa mensajes</li></ul>
+AwsEngineer::SoftwareEngineering::MessageQueues	MiPlantilla	¿Cuál es la diferencia entre SQS y SNS en AWS?	<table border="1" cellpadding="6"><tr><th>SQS</th><th>SNS</th></tr><tr><td>Cola – un consumer procesa cada mensaje</td><td>Pub/Sub – todos los suscriptores reciben el mensaje</td></tr><tr><td>Desacoplamiento de tareas</td><td>Notificaciones a múltiples destinos</td></tr></table>
+AwsEngineer::SoftwareEngineering::MessageQueues	MiPlantilla	¿Qué es una Dead Letter Queue (DLQ)?	Cola donde van los mensajes que fallaron demasiadas veces. Permite revisarlos sin perderlos.
+
+# ============================================================
+# SUBMAZO: AwsEngineer::SoftwareEngineering::Architecture
+# ============================================================
+
+AwsEngineer::SoftwareEngineering::Architecture	MiPlantilla	¿Cuál es la diferencia entre Monolito y Microservicios?	<table border="1" cellpadding="6"><tr><th>Monolito</th><th>Microservicios</th></tr><tr><td>Todo en un proceso</td><td>Servicios pequeños e independientes</td></tr><tr><td>Simple de desarrollar al inicio</td><td>Escala y despliega de forma independiente</td></tr><tr><td>Difícil de escalar partes</td><td>Complejidad operacional alta</td></tr></table>
+AwsEngineer::SoftwareEngineering::Architecture	MiPlantilla	¿Qué es la arquitectura Hexagonal?	Aísla la lógica de negocio del exterior (DB, APIs, UI) usando <b>puertos</b> (interfaces) y <b>adaptadores</b> (implementaciones). El dominio no depende de frameworks ni infraestructura.
+AwsEngineer::SoftwareEngineering::Architecture	MiPlantilla	¿Qué es el patrón Circuit Breaker?	Corta las llamadas a un servicio que está fallando para evitar cascada de errores. Tiene 3 estados: Closed (normal) → Open (cortado) → Half-Open (probando).
+AwsEngineer::SoftwareEngineering::Architecture	MiPlantilla	¿Qué es CQRS?	Command Query Responsibility Segregation: separar las operaciones de <b>escritura (Commands)</b> y <b>lectura (Queries)</b> en modelos distintos.
+AwsEngineer::SoftwareEngineering::Architecture	MiPlantilla	¿Qué garantiza el CAP Theorem?	En un sistema distribuido solo puedes garantizar 2 de 3:<ul><li><b>C</b>onsistency</li><li><b>A</b>vailability</li><li><b>P</b>artition tolerance</li></ul>En la práctica siempre hay particiones, así que es CP vs AP.
+AwsEngineer::SoftwareEngineering::Architecture	MiPlantilla	¿Cuál es la diferencia entre escalar vertical y horizontal?	<ul><li><b>Vertical (Scale Up)</b> – máquina más grande (más CPU/RAM). Tiene límite.</li><li><b>Horizontal (Scale Out)</b> – más máquinas detrás de un load balancer. Sin límite teórico.</li></ul>
+AwsEngineer::SoftwareEngineering::Architecture	MiPlantilla	¿Qué significan los "nines" de disponibilidad?	<ul><li><b>99.9%</b> – 8.7 hs de downtime/año (3 nines)</li><li><b>99.99%</b> – 52 min de downtime/año (4 nines)</li><li><b>99.999%</b> – 5 min de downtime/año (5 nines)</li></ul>
+
+# ============================================================
+# SUBMAZO: AwsEngineer::Redes::Fundamentos
+# ============================================================
+
+AwsEngineer::Redes::Fundamentos	MiPlantilla	¿Cuáles son las 7 capas del modelo OSI?	<ul><li>7. Application (HTTP, DNS)</li><li>6. Presentation (TLS, encoding)</li><li>5. Session</li><li>4. Transport (TCP, UDP)</li><li>3. Network (IP, routing)</li><li>2. Data Link (MAC, switches)</li><li>1. Physical (cables, señal)</li></ul>
+AwsEngineer::Redes::Fundamentos	MiPlantilla	¿Cuál es la diferencia entre TCP y UDP?	<table border="1" cellpadding="6"><tr><th>TCP</th><th>UDP</th></tr><tr><td>Confiable, ordenado</td><td>Rápido, sin garantía</td></tr><tr><td>3-way handshake</td><td>Sin conexión previa</td></tr><tr><td>HTTP, SSH, email</td><td>DNS, video streaming, gaming</td></tr></table>
+AwsEngineer::Redes::Fundamentos	MiPlantilla	¿Qué es el 3-way handshake de TCP?	<ul><li>Cliente → Servidor: <b>SYN</b></li><li>Servidor → Cliente: <b>SYN-ACK</b></li><li>Cliente → Servidor: <b>ACK</b></li></ul>Después de esto la conexión está establecida.
+AwsEngineer::Redes::Fundamentos	MiPlantilla	¿Cuáles son los rangos de IPs privadas (RFC 1918)?	<ul><li><code>10.0.0.0/8</code></li><li><code>172.16.0.0/12</code></li><li><code>192.168.0.0/16</code></li></ul>No son enrutables en internet.
+AwsEngineer::Redes::Fundamentos	MiPlantilla	¿Qué significa /24 en CIDR notation?	Los primeros 24 bits son la red, los últimos 8 son hosts.<br>Una /24 tiene <b>254 hosts</b> usables (256 - 2).
+AwsEngineer::Redes::Fundamentos	MiPlantilla	¿Qué es NAT y para qué sirve?	Network Address Translation: traduce IPs privadas a una IP pública. Permite que muchos dispositivos compartan una sola IP pública.
+AwsEngineer::Redes::Fundamentos	MiPlantilla	¿Cómo funciona la resolución DNS?	Browser → Cache local → Resolver ISP → Root DNS → TLD DNS (.com) → Authoritative DNS → IP devuelta al browser.
+AwsEngineer::Redes::Fundamentos	MiPlantilla	¿Cuáles son los tipos de records DNS más importantes?	<ul><li><b>A</b> – dominio → IPv4</li><li><b>AAAA</b> – dominio → IPv6</li><li><b>CNAME</b> – dominio → otro dominio</li><li><b>MX</b> – servidor de correo</li><li><b>TXT</b> – verificación, SPF, DKIM</li></ul>
+AwsEngineer::Redes::Fundamentos	MiPlantilla	¿Cuál es la diferencia entre HTTP/1.1, HTTP/2 y HTTP/3?	<table border="1" cellpadding="6"><tr><th>Versión</th><th>Clave</th></tr><tr><td>HTTP/1.1</td><td>Una request por conexión (con keep-alive)</td></tr><tr><td>HTTP/2</td><td>Multiplexing: múltiples requests en una conexión TCP</td></tr><tr><td>HTTP/3</td><td>Sobre UDP (QUIC), más rápido en redes inestables</td></tr></table>
+AwsEngineer::Redes::Fundamentos	MiPlantilla	¿Qué hace el TLS handshake?	Negocia algoritmos de cifrado, intercambia claves y verifica el certificado del servidor. Resultado: canal cifrado y autenticado.
+AwsEngineer::Redes::Fundamentos	MiPlantilla	¿Cuáles son los puertos más importantes que debes saber?	<ul><li><b>22</b> – SSH</li><li><b>80</b> – HTTP</li><li><b>443</b> – HTTPS</li><li><b>5432</b> – PostgreSQL</li><li><b>3306</b> – MySQL</li><li><b>6379</b> – Redis</li><li><b>27017</b> – MongoDB</li></ul>
+
+# ============================================================
+# SUBMAZO: AwsEngineer::BaseDatos::SQL
+# ============================================================
+
+AwsEngineer::BaseDatos::SQL	MiPlantilla	¿Cuáles son los 4 tipos de JOIN?	<ul><li><b>INNER JOIN</b> – solo filas que coinciden en ambas tablas</li><li><b>LEFT JOIN</b> – todas del lado izquierdo, NULL si no hay match</li><li><b>RIGHT JOIN</b> – todas del lado derecho</li><li><b>FULL OUTER JOIN</b> – todas de ambas tablas</li></ul>
+AwsEngineer::BaseDatos::SQL	MiPlantilla	¿Cuál es la diferencia entre WHERE y HAVING?	<ul><li><b>WHERE</b> – filtra filas <b>antes</b> del GROUP BY</li><li><b>HAVING</b> – filtra grupos <b>después</b> del GROUP BY (sobre agregados)</li></ul>
+AwsEngineer::BaseDatos::SQL	MiPlantilla	¿Qué es un índice y cuándo agregarlo?	Estructura (B-tree) que acelera búsquedas evitando full table scan.<br><br>Agregar en: columnas de WHERE frecuentes, JOINs, ORDER BY, foreign keys.
+AwsEngineer::BaseDatos::SQL	MiPlantilla	¿Qué significa ACID en bases de datos?	<ul><li><b>A</b>tomicity – todo o nada</li><li><b>C</b>onsistency – la DB siempre queda válida</li><li><b>I</b>solation – las transacciones no se interfieren</li><li><b>D</b>urability – los datos commiteados sobreviven fallos</li></ul>
+AwsEngineer::BaseDatos::SQL	MiPlantilla	¿Qué es el problema N+1 en queries?	Ocurre cuando haces 1 query para obtener N registros y luego N queries individuales para cada uno.<br><br>✅ Solución: usar JOIN para traer todo en una sola query.
+AwsEngineer::BaseDatos::SQL	MiPlantilla	¿Qué es un CTE?	Common Table Expression: subquery con nombre, definida con <code>WITH</code>. Hace queries complejas más legibles y reutilizables.
+AwsEngineer::BaseDatos::SQL	MiPlantilla	¿Qué hacen las Window Functions?	Calculan valores sobre un conjunto de filas sin colapsarlas (no reduce filas como GROUP BY).<br>Ej: <code>ROW_NUMBER()</code>, <code>RANK()</code>, <code>SUM() OVER()</code>
+AwsEngineer::BaseDatos::SQL	MiPlantilla	¿Cuáles son las 3 formas normales (1NF, 2NF, 3NF)?	<ul><li><b>1NF</b> – valores atómicos (no listas en una celda)</li><li><b>2NF</b> – 1NF + sin dependencias parciales del PK</li><li><b>3NF</b> – 2NF + sin dependencias transitivas</li></ul>
+AwsEngineer::BaseDatos::SQL	MiPlantilla	¿Cuáles son los 3 tipos de cardinalidad en relaciones?	<ul><li><b>1:1</b> – User ↔ Profile</li><li><b>1:N</b> – User → Orders</li><li><b>N:M</b> – Orders ↔ Products (requiere tabla intermedia)</li></ul>
+
+# ============================================================
+# SUBMAZO: AwsEngineer::BaseDatos::NoSQL
+# ============================================================
+
+AwsEngineer::BaseDatos::NoSQL	MiPlantilla	¿Cuáles son los 4 tipos de bases de datos NoSQL?	<ul><li><b>Document</b> – JSON (MongoDB, DynamoDB)</li><li><b>Key-Value</b> – Redis, DynamoDB</li><li><b>Wide-Column</b> – Cassandra (IoT, time-series)</li><li><b>Graph</b> – Neo4j (redes sociales)</li></ul>
+AwsEngineer::BaseDatos::NoSQL	MiPlantilla	¿Cuándo usar NoSQL en vez de SQL?	<ul><li>Schema flexible o variable</li><li>Escala masiva horizontal</li><li>Patrones de acceso simples y definidos</li><li>Alta velocidad de escritura</li></ul>No es mejor que SQL, es diferente.
+AwsEngineer::BaseDatos::NoSQL	MiPlantilla	¿Cuál es la diferencia entre Partition Key y Sort Key en DynamoDB?	<ul><li><b>Partition Key</b> – identifica en qué partición está el ítem</li><li><b>Sort Key</b> – ordena ítems dentro de la misma partición</li></ul>Juntos forman la clave primaria compuesta.
+AwsEngineer::BaseDatos::NoSQL	MiPlantilla	¿Qué es un GSI en DynamoDB?	Global Secondary Index: índice adicional con una Partition Key diferente. Permite consultar por atributos que no son la PK original.
+AwsEngineer::BaseDatos::NoSQL	MiPlantilla	¿Para qué se usa Redis?	<ul><li>Caché de resultados de DB</li><li>Almacenamiento de sesiones</li><li>Rate limiting</li><li>Leaderboards (sorted sets)</li><li>Pub/Sub en tiempo real</li></ul>
+AwsEngineer::BaseDatos::NoSQL	MiPlantilla	¿Cuáles son las estructuras de datos principales de Redis?	<ul><li><b>String</b> – clave/valor simple</li><li><b>Hash</b> – objeto con campos</li><li><b>List</b> – cola o stack</li><li><b>Set</b> – valores únicos</li><li><b>Sorted Set</b> – valores con score (leaderboard)</li></ul>
+
+# ============================================================
+# SUBMAZO: AwsEngineer::Python::Flask
+# ============================================================
+
+AwsEngineer::Python::Flask	MiPlantilla	¿Qué es Flask y para qué se usa?	Micro-framework web de Python, minimalista y fácil de aprender.<br><br>Ideal para: APIs simples, prototipos, proyectos pequeños. No trae validación automática ni ORM incluido.
+AwsEngineer::Python::Flask	MiPlantilla	¿Cómo se define una ruta en Flask?	<pre>@app.route('/users/&lt;int:id&gt;')<br>def get_user(id):<br>    return jsonify({'id': id})</pre>
+AwsEngineer::Python::Flask	MiPlantilla	¿Cómo se devuelve JSON con un status code en Flask?	<pre>return jsonify({'id': 1, 'name': 'Alice'}), 201</pre>El segundo valor es el status code HTTP.
+AwsEngineer::Python::Flask	MiPlantilla	¿Cómo se lee el body JSON de una request en Flask?	<pre>data = request.get_json()<br>name = data['name']</pre>
+AwsEngineer::Python::Flask	MiPlantilla	¿Cuál es la diferencia entre Flask, FastAPI y Django?	<table border="1" cellpadding="6"><tr><th>Flask</th><th>FastAPI</th><th>Django</th></tr><tr><td>Mínimo, muy fácil</td><td>Validación automática, async</td><td>Todo incluido, más complejo</td></tr><tr><td>Prototipos, APIs simples</td><td>APIs modernas de producción</td><td>Apps grandes</td></tr></table>
+AwsEngineer::Python::Flask	MiPlantilla	¿Qué es un Blueprint en Flask?	Módulo que agrupa rutas relacionadas. Permite dividir la app en archivos separados y registrarlos en la app principal con <code>app.register_blueprint()</code>.
+AwsEngineer::Python::Flask	MiPlantilla	¿Cómo se manejan los errores en Flask?	<pre>@app.errorhandler(404)<br>def not_found(e):<br>    return jsonify({'error': 'Not found'}), 404</pre>
+AwsEngineer::Python::Flask	MiPlantilla	¿Cómo se corre Flask en producción?	Con <b>Gunicorn</b>:<br><code>gunicorn -w 4 -b 0.0.0.0:8000 app:app</code><br><br>Nunca usar <code>app.run(debug=True)</code> en producción.
+
+# ============================================================
+# SUBMAZO: AwsEngineer::IngenieriaSoftware::SDLC
+# ============================================================
+
+AwsEngineer::IngenieriaSoftware::SDLC	MiPlantilla	¿Cuáles son las fases del SDLC?	<ul><li><b>Planning</b> – scope, recursos, viabilidad</li><li><b>Analysis</b> – requisitos</li><li><b>Design</b> – arquitectura, base de datos</li><li><b>Development</b> – código</li><li><b>Testing</b> – verificar que funciona</li><li><b>Deployment</b> – subir a producción</li><li><b>Maintenance</b> – bugs y mejoras</li></ul>
+AwsEngineer::IngenieriaSoftware::SDLC	MiPlantilla	¿Diferencia entre Waterfall, Agile y Kanban?	<table border="1" cellpadding="6"><tr><th>Modelo</th><th>Entrega</th><th>Flexibilidad</th></tr><tr><td>Waterfall</td><td>Al final</td><td>Baja</td></tr><tr><td>Agile/Scrum</td><td>Cada sprint</td><td>Alta</td></tr><tr><td>Kanban</td><td>Continua</td><td>Alta</td></tr></table>
+
+# ============================================================
+# SUBMAZO: AwsEngineer::IngenieriaSoftware::Arquitectura
+# ============================================================
+
+AwsEngineer::IngenieriaSoftware::Arquitectura	MiPlantilla	¿Qué es la arquitectura en capas (Layered)?	Organiza el código en capas con responsabilidad única:<br><br><b>Presentación</b> → <b>Negocio</b> → <b>Datos</b><br><br>Cada capa solo habla con la capa inmediatamente inferior.
+AwsEngineer::IngenieriaSoftware::Arquitectura	MiPlantilla	¿Qué es una arquitectura monolito?	Una sola unidad desplegable donde datos, lógica y presentación están juntos. Simple de desarrollar al inicio, difícil de escalar y mantener cuando crece.
+AwsEngineer::IngenieriaSoftware::Arquitectura	MiPlantilla	¿Diferencia entre monolito y arquitectura en capas?	<table border="1" cellpadding="6"><tr><th>Monolito</th><th>Capas</th></tr><tr><td>Todo en un lugar</td><td>Separado por responsabilidad</td></tr><tr><td>Simple al inicio</td><td>Más organizado y mantenible</td></tr><tr><td>Difícil de escalar</td><td>Cada capa es independiente</td></tr></table>
+
+# ============================================================
+# SUBMAZO: AwsEngineer::Infraestructura::Docker
+# ============================================================
+
+AwsEngineer::Infraestructura::Docker	MiPlantilla	¿Qué es Docker?	Plataforma para empaquetar y ejecutar aplicaciones en contenedores — entornos aislados, livianos y reproducibles.
+AwsEngineer::Infraestructura::Docker	MiPlantilla	¿Diferencia entre imagen y contenedor en Docker?	<table border="1" cellpadding="6"><tr><th>Imagen</th><th>Contenedor</th></tr><tr><td>Plantilla de solo lectura</td><td>Instancia en ejecución de una imagen</td></tr><tr><td>Se construye con Dockerfile</td><td>Se crea con docker run</td></tr></table>
+AwsEngineer::Infraestructura::Docker	MiPlantilla	¿Diferencia entre VM y contenedor?	<table border="1" cellpadding="6"><tr><th>VM</th><th>Contenedor</th></tr><tr><td>OS completo (GBs)</td><td>Solo proceso aislado (MBs)</td></tr><tr><td>Inicia en minutos</td><td>Inicia en segundos</td></tr><tr><td>Alto overhead</td><td>Bajo overhead</td></tr></table>
+AwsEngineer::Infraestructura::Docker	MiPlantilla	¿Qué hace cada instrucción clave de un Dockerfile?	<ul><li><b>FROM</b> – imagen base</li><li><b>WORKDIR</b> – directorio de trabajo</li><li><b>COPY</b> – copia archivos al image</li><li><b>RUN</b> – ejecuta comando al construir</li><li><b>EXPOSE</b> – documenta el puerto</li><li><b>CMD</b> – comando por defecto al arrancar</li></ul>
+AwsEngineer::Infraestructura::Docker	MiPlantilla	¿Diferencia entre CMD y ENTRYPOINT?	<table border="1" cellpadding="6"><tr><th>CMD</th><th>ENTRYPOINT</th></tr><tr><td>Overridable desde docker run</td><td>Fijo, no se reemplaza</td></tr><tr><td>Comando por defecto</td><td>CMD se convierte en sus argumentos</td></tr></table>
+AwsEngineer::Infraestructura::Docker	MiPlantilla	¿Qué son los layers en Docker y por qué importan?	Cada instrucción del Dockerfile crea una capa. Las capas se cachean — si no cambia, Docker la reutiliza. Poner instrucciones que cambian poco primero optimiza el build.
+AwsEngineer::Infraestructura::Docker	MiPlantilla	¿Diferencia entre bind mount y named volume?	<table border="1" cellpadding="6"><tr><th>Bind Mount</th><th>Named Volume</th></tr><tr><td>Carpeta del host mapeada</td><td>Gestionado por Docker</td></tr><tr><td>Útil para desarrollo</td><td>Útil para bases de datos</td></tr><tr><td>Depende de la ruta del host</td><td>Persiste al borrar el contenedor</td></tr></table>
+AwsEngineer::Infraestructura::Docker	MiPlantilla	¿Qué es Docker Compose?	Herramienta para definir y levantar aplicaciones multi-contenedor con un solo archivo YAML (docker-compose.yml).
+AwsEngineer::Infraestructura::Docker	MiPlantilla	¿Cuáles son los comandos esenciales de Docker Compose?	<ul><li><b>docker compose up -d</b> – levantar en background</li><li><b>docker compose down</b> – detener y eliminar contenedores</li><li><b>docker compose logs</b> – ver logs</li><li><b>docker compose ps</b> – estado de servicios</li><li><b>docker compose build</b> – reconstruir imágenes</li></ul>
+AwsEngineer::Infraestructura::Docker	MiPlantilla	¿Para qué sirve .dockerignore?	Excluye archivos del build context — reduce el tamaño de la imagen y evita enviar secretos (.env, .git, node_modules) al daemon de Docker.

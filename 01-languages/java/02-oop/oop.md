@@ -125,6 +125,35 @@ class Example {
 
 ---
 
+## Packages
+*Organize classes into namespaces*
+
+**Package** – Folder-like grouping of related classes
+**Import** – Bring a class from another package into scope
+
+```java
+// File: mypackage/User.java
+package mypackage;
+
+public class User {
+    public String name;
+}
+
+// File: Main.java
+import mypackage.User;          // single class
+import mypackage.*;             // all classes in package
+
+public class Main {
+    public static void main(String[] args) {
+        User u = new User();
+    }
+}
+```
+
+**Rules** – Folder path must match package name; only `public` classes are visible from other packages.
+
+---
+
 ## Encapsulation
 *Protecting and controlling data access*
 
