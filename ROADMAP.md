@@ -24,6 +24,8 @@ Conseguir un puesto como **AWS Engineer** con perfil full-stack backend.
 - [x] **Git Workflow** → `00-software-engineering/05-delivery/git-workflow.md`
 - [x] **Message Queues** → `00-software-engineering/06-communication/message-queues.md`
 - [x] **Documentation** → `00-software-engineering/06-communication/documentation.md`
+- [x] **Algoritmia & Estructuras de Datos** → `00-software-engineering/08-algorithms/`
+  - Complejidad, estructuras, árboles/grafos, ordenamiento/búsqueda, patrones
 
 ---
 
@@ -193,6 +195,7 @@ Conseguir un puesto como **AWS Engineer** con perfil full-stack backend.
 | 0 | Documentation | ✅ Notas completas |
 | 0 | Message Queues | ✅ Notas completas |
 | 0 | Architecture | ✅ Notas completas |
+| 0 | Algoritmia & Estructuras de Datos | ✅ Notas completas |
 | 1 | Linux | ✅ Notas completas |
 | 1 | Bash | ✅ Notas completas |
 | 1 | Redes | ✅ Notas completas |

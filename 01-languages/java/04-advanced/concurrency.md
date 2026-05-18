@@ -158,3 +158,155 @@ future
     .exceptionally(e -> "default on error")
     .thenAccept(System.out::println);
 ```
+
+---
+
+## Interview Essentials
+*Core concurrency questions explained*
+
+### Threads vs Processes
+*JVM threading model basics*
+
+**Thread** – Shared heap, cheap, communicates via shared memory  
+**Process** – Isolated memory, expensive, communicates via IPC  
+**JVM** – Real OS threads, true multicore parallelism (no GIL)  
+**When threads** – Almost always in Java; processes only for isolation/crash boundaries  
+
+---
+
+### Race Condition
+*Unsynchronized access corrupts state*
+
+**Race condition** – Outcome depends on thread scheduling  
+**Why `count++` isn't atomic** – Compiles to read, increment, write (3 ops)  
+**Fix** – `synchronized`, `AtomicInteger`, or a `Lock`  
+
+```java
+class Counter {
+    private int bad = 0;
+    void badIncrement() { bad++; }           // lost updates under contention
+
+    private final java.util.concurrent.atomic.AtomicInteger good
+        = new java.util.concurrent.atomic.AtomicInteger();
+    void goodIncrement() { good.incrementAndGet(); }  // atomic CAS
+}
+
+// Usage: 10 threads x 100_000 → good == 1_000_000, bad < that
+```
+
+---
+
+### synchronized vs volatile vs Atomic
+*Choose the right tool*
+
+| | Visibility | Atomicity | Use for |
+|--|-----------|-----------|---------|
+| `volatile` | Yes | No | Flags, single read/write |
+| `synchronized` | Yes | Yes (block) | Compound operations |
+| `AtomicInteger` | Yes | Yes (CAS) | Counters, single var |
+
+**Rule** – `volatile` for visibility only; compound ops need `synchronized`/Atomic  
+
+---
+
+### happens-before
+*JMM ordering guarantee*
+
+**happens-before** – If A happens-before B, A's effects visible to B  
+**Monitor unlock** – Unlocking a lock happens-before next lock of it  
+**volatile write** – happens-before every later read of that field  
+**Thread start/join** – `start()` HB thread's run; run HB `join()` return  
+**Purpose** – Defines when one thread's writes are visible to another  
+
+---
+
+### Lock vs ReentrantLock vs Semaphore
+*Beyond synchronized*
+
+**ReentrantLock** – Explicit lock; supports `tryLock`, timeout, fairness, interruptible  
+**ReadWriteLock** – Many readers OR one writer  
+**Semaphore** – Permits; bounds N concurrent accessors  
+**vs synchronized** – More flexible but must `unlock()` in `finally`  
+
+```java
+import java.util.concurrent.locks.ReentrantLock;
+
+ReentrantLock lock = new ReentrantLock();
+void critical() {
+    if (lock.tryLock()) {            // non-blocking; avoids deadlock
+        try { /* work */ }
+        finally { lock.unlock(); }   // always release in finally
+    }
+}
+
+// Usage
+java.util.concurrent.Semaphore sem = new java.util.concurrent.Semaphore(3);
+sem.acquire();  try { /* max 3 here */ } finally { sem.release(); }
+```
+
+---
+
+### Deadlock — Coffman Conditions
+*Four conditions; break one to prevent*
+
+**Mutual exclusion** – Resource held exclusively  
+**Hold and wait** – Holds one lock, waits for another  
+**No preemption** – Lock released only voluntarily  
+**Circular wait** – Cycle of threads waiting on each other  
+
+```java
+// BUGGY: T1 locks a→b, T2 locks b→a → circular wait
+// FIX: global lock ordering — always acquire in the same order
+void transfer(Object a, Object b) {
+    synchronized (a) {
+        synchronized (b) { /* work */ }   // consistent order
+    }
+}
+// Also: tryLock(timeout) breaks hold-and-wait
+```
+
+**Prevention**: lock ordering, `tryLock` with timeout, single coarse lock
+
+---
+
+### Producer-Consumer
+*BlockingQueue decouples producers*
+
+**`BlockingQueue`** – Thread-safe; `put`/`take` block when full/empty  
+**`ArrayBlockingQueue(n)`** – Bounded buffer → backpressure  
+**Poison pill** – Sentinel object signals consumers to stop  
+
+```java
+import java.util.concurrent.*;
+
+BlockingQueue<Integer> q = new ArrayBlockingQueue<>(10);  // bounded
+
+Runnable producer = () -> {
+    try {
+        for (int i = 0; i < 20; i++) q.put(i);  // blocks if full
+        q.put(-1);                               // poison pill
+    } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+};
+
+Runnable consumer = () -> {
+    try {
+        int item;
+        while ((item = q.take()) != -1) { /* process */ }
+    } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+};
+
+// Usage
+new Thread(producer).start();
+new Thread(consumer).start();
+```
+
+---
+
+## Best Practices
+
+**ExecutorService** – Prefer pools over raw `new Thread()`; always `shutdown()`  
+**`volatile`** – Visibility only; never for compound operations  
+**Atomics** – Use for counters/flags instead of `synchronized` when possible  
+**Locks** – Always `unlock()` in `finally`; prefer consistent lock ordering  
+**Immutability** – Immutable objects are inherently thread-safe  
+**`BlockingQueue`** – Use bounded queues for backpressure in producer-consumer  

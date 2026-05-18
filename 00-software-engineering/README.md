@@ -17,8 +17,9 @@
 | # | Topic | Path |
 |---|-------|------|
 | 3 | REST API Design | `02-design/rest-api.md` |
-| 4 | Design Patterns + MVC | `02-design/design-patterns.md` |
-| 5 | Clean Code | `02-design/clean-code.md` |
+| 4 | HTTP API Deep | `02-design/http-api-deep.md` |
+| 5 | Design Patterns + MVC | `02-design/design-patterns.md` |
+| 6 | Clean Code | `02-design/clean-code.md` |
 
 ### 03 - Architecture
 *Estructura del sistema*
@@ -40,6 +41,7 @@
 | 12 | Testing | `04-quality/testing.md` |
 | 13 | Security – OWASP | `04-quality/security-owasp.md` |
 | 14 | Observability | `04-quality/observability.md` |
+| 15 | Production Troubleshooting | `04-quality/troubleshooting.md` |
 
 ### 05 - Delivery
 *Entrega y operación*
@@ -57,3 +59,15 @@
 |---|-------|------|
 | 18 | Message Queues | `06-communication/message-queues.md` |
 | 19 | Documentation | `06-communication/documentation.md` |
+
+### 08 - Algorithms
+*Algoritmia y estructuras de datos para entrevistas*
+
+| # | Topic | Path |
+|---|-------|------|
+| 20 | Complexity (Big-O) | `08-algorithms/01-complexity.md` |
+| 21 | Core Structures | `08-algorithms/02-core-structures.md` |
+| 22 | Trees & Graphs | `08-algorithms/03-trees-graphs.md` |
+| 23 | Sorting & Searching | `08-algorithms/04-sorting-searching.md` |
+| 24 | Interview Patterns | `08-algorithms/05-patterns.md` |
+| 25 | Cheat Sheet | `08-algorithms/06-cheat-sheet.md` |

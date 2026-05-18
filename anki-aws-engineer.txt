@@ -782,3 +782,120 @@ AwsEngineer::Certificaciones::DEA-C01::Domain4	MiPlantilla	¿Para qué sirve Ama
 AwsEngineer::Certificaciones::DEA-C01::Domain4	MiPlantilla	¿Qué permisos mínimos necesita el rol de un Glue Job?	<ul><li>S3: GetObject + PutObject (datos de entrada/salida)</li><li>Glue: acceso al Data Catalog</li><li>CloudWatch Logs: crear grupos y streams</li><li>KMS: si usa cifrado SSE-KMS</li></ul>
 AwsEngineer::Certificaciones::DEA-C01::Domain4	MiPlantilla	¿Por qué usar S3 VPC Gateway Endpoint en arquitecturas de datos?	Evita que el tráfico S3 salga por NAT Gateway → elimina el costo de NAT por bytes procesados. El tráfico permanece dentro de la red de AWS. El endpoint es <b>gratuito</b>.
 AwsEngineer::Certificaciones::DEA-C01::Domain4	MiPlantilla	¿Qué es Redshift dynamic data masking?	Políticas de enmascaramiento aplicadas en tiempo de consulta según el rol del usuario. El dato original no cambia en la tabla; la transformación ocurre al momento de leer. Ej: analistas ven <code>***@email.com</code>, admins ven el email completo.
+AwsEngineer::Algoritmia::Complejidad	MiPlantilla	¿Qué es la notación Big-O?	Cota superior del crecimiento de tiempo o espacio de un algoritmo cuando <code>n → ∞</code>. Compara escalabilidad independiente del hardware.
+AwsEngineer::Algoritmia::Complejidad	MiPlantilla	¿Cómo se simplifica una expresión Big-O?	<ul><li>Se eliminan las constantes: <code>O(2n) → O(n)</code></li><li>Se descartan los términos no dominantes: <code>O(n² + n) → O(n²)</code></li></ul>
+AwsEngineer::Algoritmia::Complejidad	MiPlantilla	¿Cuáles son las complejidades comunes de menor a mayor crecimiento?	<pre>O(1)      constante
+O(log n)  logarítmica
+O(n)      lineal
+O(n log n) linearítmica
+O(n²)     cuadrática
+O(2ⁿ)     exponencial
+O(n!)     factorial</pre>
+AwsEngineer::Algoritmia::Complejidad	MiPlantilla	¿Diferencia entre complejidad temporal y espacial?	<table border="1" cellpadding="6"><tr><th>Temporal</th><th>Espacial</th></tr><tr><td>Cómo crecen las operaciones con el tamaño de entrada</td><td>Memoria extra usada, sin contar la entrada</td></tr></table>
+AwsEngineer::Algoritmia::Complejidad	MiPlantilla	¿Qué es la complejidad amortizada?	Costo del peor caso promediado sobre una secuencia de operaciones. Ej: <code>list.append</code> es <code>O(1)</code> amortizado aunque el resize ocasional sea <code>O(n)</code>.
+AwsEngineer::Algoritmia::Complejidad	MiPlantilla	¿Mejor, promedio y peor caso de quicksort?	<ul><li>Mejor/promedio: <code>O(n log n)</code></li><li>Peor: <code>O(n²)</code> con mal pivote sobre datos ya ordenados</li></ul>
+AwsEngineer::Algoritmia::Complejidad	MiPlantilla	¿Por qué usar set/dict en vez de list para pruebas de pertenencia?	<code>x in list</code> es <code>O(n)</code> (escaneo lineal); <code>x in set/dict</code> es <code>O(1)</code> promedio (hashing).
+AwsEngineer::Algoritmia::Estructuras	MiPlantilla	¿Costo de acceso vs inserción en medio de un array?	Acceso por índice <code>O(1)</code>; insertar o borrar en el medio <code>O(n)</code> porque desplaza elementos.
+AwsEngineer::Algoritmia::Estructuras	MiPlantilla	¿Por qué un hash map es O(1) promedio y cuándo degrada?	Hashea la clave a un bucket → acceso/inserción <code>O(1)</code> promedio. Degrada a <code>O(n)</code> con muchas colisiones o mala distribución del hash.
+AwsEngineer::Algoritmia::Estructuras	MiPlantilla	¿Cuándo usar una linked list en vez de un array?	Inserción/borrado <code>O(1)</code> en un nodo conocido o en los extremos, tamaño desconocido, LRU cache. A cambio: acceso <code>O(n)</code> y sin localidad de caché.
+AwsEngineer::Algoritmia::Estructuras	MiPlantilla	¿Diferencia entre stack y queue?	<table border="1" cellpadding="6"><tr><th>Stack (LIFO)</th><th>Queue (FIFO)</th></tr><tr><td>Último en entrar, primero en salir. Undo, DFS, parsing</td><td>Primero en entrar, primero en salir. BFS, scheduling</td></tr></table>
+AwsEngineer::Algoritmia::Estructuras	MiPlantilla	¿Por qué usar collections.deque para una cola?	<code>deque</code> hace popleft/append en <code>O(1)</code> en ambos extremos; <code>list.pop(0)</code> es <code>O(n)</code>.
+AwsEngineer::Algoritmia::Estructuras	MiPlantilla	¿Cómo invertir una linked list en Python?	<pre>def reverse(head):
+    prev = None
+    while head:
+        head.next, prev, head = prev, head, head.next
+    return prev</pre>
+AwsEngineer::Algoritmia::ArbolesGrafos	MiPlantilla	¿Cuál es la propiedad de orden de un BST?	Para cada nodo: todo el subárbol izquierdo es menor que el nodo y todo el derecho es mayor. Recorrido inorder da orden ascendente.
+AwsEngineer::Algoritmia::ArbolesGrafos	MiPlantilla	¿Diferencia entre árbol balanceado y sesgado?	Balanceado: altura <code>O(log n)</code> → operaciones rápidas. Sesgado: degenera a una lista, altura <code>O(n)</code>.
+AwsEngineer::Algoritmia::ArbolesGrafos	MiPlantilla	¿Cuáles son los recorridos de un árbol?	<ul><li><b>Inorder</b> – izq, nodo, der (BST → ordenado)</li><li><b>Preorder</b> – nodo, izq, der (copiar/serializar)</li><li><b>Postorder</b> – izq, der, nodo (borrar/evaluar)</li><li><b>Level-order</b> – por niveles (BFS)</li></ul>
+AwsEngineer::Algoritmia::ArbolesGrafos	MiPlantilla	¿Lista de adyacencia vs matriz de adyacencia?	<table border="1" cellpadding="6"><tr><th>Lista</th><th>Matriz</th></tr><tr><td>Espacio O(V+E), buena para grafos dispersos</td><td>Espacio O(V²), ¿existe arista? O(1), grafos densos</td></tr></table>
+AwsEngineer::Algoritmia::ArbolesGrafos	MiPlantilla	¿Cuándo usar BFS y cuándo DFS?	<ul><li><b>BFS</b> – camino más corto sin pesos, orden por niveles</li><li><b>DFS</b> – existencia de camino, ciclos, componentes, backtracking, orden topológico</li></ul>
+AwsEngineer::Algoritmia::ArbolesGrafos	MiPlantilla	¿Qué estructura usa BFS y cuál DFS?	BFS usa una cola (<code>deque</code>); DFS usa una pila (recursión o stack explícito). Ambos requieren un set <code>visited</code>.
+AwsEngineer::Algoritmia::ArbolesGrafos	MiPlantilla	¿Para qué sirven Dijkstra y el orden topológico?	Dijkstra: camino más corto en grafos con pesos (priority queue). Orden topológico: ordenamiento lineal de un DAG (scheduling, orden de build).
+AwsEngineer::Algoritmia::OrdenBusqueda	MiPlantilla	¿Cuáles son los pitfalls de la búsqueda binaria?	<ul><li>Condición <code>left <= right</code> (no <code><</code>)</li><li><code>mid = left + (right-left)//2</code> evita overflow y sesgo</li><li>Actualizar <code>left = mid+1</code> / <code>right = mid-1</code> (no <code>mid</code>) para no ciclar</li></ul>
+AwsEngineer::Algoritmia::OrdenBusqueda	MiPlantilla	¿Cuál es la complejidad de la búsqueda binaria?	<code>O(log n)</code> sobre un arreglo ordenado: descarta la mitad del rango en cada paso.
+AwsEngineer::Algoritmia::OrdenBusqueda	MiPlantilla	¿Cuándo aplicar binary search on answer?	Cuando el problema es "minimizar/maximizar X tal que feasible(X)" y el predicado es monótono. Se busca binariamente sobre el rango de respuestas.
+AwsEngineer::Algoritmia::OrdenBusqueda	MiPlantilla	¿Comparación entre merge sort y quicksort?	<table border="1" cellpadding="6"><tr><th>Merge sort</th><th>Quicksort</th></tr><tr><td>O(n log n) siempre, estable, O(n) espacio</td><td>O(n log n) prom / O(n²) peor, in-place, no estable</td></tr></table>
+AwsEngineer::Algoritmia::OrdenBusqueda	MiPlantilla	¿Qué algoritmo de ordenamiento usar en la práctica en Python?	El built-in <code>sorted()</code> / <code>.sort()</code> (Timsort): O(n log n), estable y optimizado. Solo implementar manualmente si lo piden.
+AwsEngineer::Algoritmia::OrdenBusqueda	MiPlantilla	¿Cómo ordenar por múltiples claves en Python?	<pre>sorted(people, key=lambda p: (p[1], p[0]))
+# por edad asc, luego nombre asc
+sorted(nums, reverse=True)  # descendente</pre>
+AwsEngineer::Algoritmia::Patrones	MiPlantilla	¿Cuándo usar el patrón two pointers?	Arreglo ordenado para encontrar par/tripleta con suma objetivo, palíndromos o particionar. Ej: Two Sum II, Valid Palindrome.
+AwsEngineer::Algoritmia::Patrones	MiPlantilla	¿Cuándo usar sliding window?	Subarreglo o substring contiguo: máximo/mínimo/más largo de tamaño o condición fija. Ej: Longest Substring Without Repeating.
+AwsEngineer::Algoritmia::Patrones	MiPlantilla	¿Para qué sirven los fast & slow pointers?	Dos punteros a distinta velocidad: detectar ciclo en linked list, encontrar el medio, happy number.
+AwsEngineer::Algoritmia::Patrones	MiPlantilla	¿Diferencia entre memoization y tabulation en DP?	<table border="1" cellpadding="6"><tr><th>Memoization</th><th>Tabulation</th></tr><tr><td>Top-down: recursión + caché</td><td>Bottom-up: llenar una tabla iterativamente</td></tr></table>
+AwsEngineer::Algoritmia::Patrones	MiPlantilla	¿Cuándo aplica programación dinámica?	Cuando hay subproblemas que se solapan y subestructura óptima. Ej: fibonacci, climbing stairs, coin change, knapsack, LCS.
+AwsEngineer::Algoritmia::Patrones	MiPlantilla	¿Qué es el patrón backtracking?	Construir candidatos incrementalmente y deshacer la elección al llegar a un callejón sin salida. Ej: subsets, permutations, N-Queens.
+AwsEngineer::Algoritmia::Patrones	MiPlantilla	¿Cuáles son los elementos esenciales de la recursión?	<ul><li><b>Caso base</b> – detiene la recursión</li><li><b>Caso recursivo</b> – reduce hacia el caso base</li><li><b>Call stack</b> – cada llamada apila un frame; recursión profunda → stack overflow</li></ul>
+AwsEngineer::Algoritmia::Patrones	MiPlantilla	¿Qué pasos seguir en un problema de entrevista?	<ul><li>Clarificar input (tipos, tamaño, ordenado, duplicados)</li><li>Casos borde (vacío, un elemento, negativos)</li><li>Fuerza bruta primero, decir su complejidad</li><li>Optimizar con un patrón</li><li>Indicar complejidad final y probar con ejemplo</li></ul>
+AwsEngineer::Carrera::Behavioral	MiPlantilla	¿Qué significa STAR?	<ul><li><b>Situation</b> – contexto breve</li><li><b>Task</b> – tu responsabilidad concreta</li><li><b>Action</b> – qué hiciste tú ("yo", no "nosotros")</li><li><b>Result</b> – resultado y aprendizaje, cuantificado</li></ul>
+AwsEngineer::Carrera::Behavioral	MiPlantilla	¿Por qué importa la entrevista conductual?	Pesa ~50% de la decisión. Filtra colaboración, ownership y comunicación. Premisa: el comportamiento pasado predice el futuro.
+AwsEngineer::Carrera::Behavioral	MiPlantilla	¿En qué parte de STAR invertir más tiempo?	En Action y Result. La Situation debe ser corta; el aprendizaje es el cierre clave.
+AwsEngineer::Carrera::Behavioral	MiPlantilla	¿Cómo responder "tu mayor fallo"?	Elige un error real que asumiste, cómo lo contuviste y el cambio concreto para que no se repita. El aprendizaje es el punto.
+AwsEngineer::Carrera::Behavioral	MiPlantilla	¿Cómo abordar "conflicto con un compañero"?	Plantea el desacuerdo de forma neutral, muestra que buscaste su punto de vista y cómo se resolvió. Nunca culpes a la otra persona.
+AwsEngineer::Carrera::Behavioral	MiPlantilla	¿Cuál es la estructura de "háblame de ti"?	<table border="1" cellpadding="6"><tr><th>Presente</th><th>Pasado</th><th>Futuro</th></tr><tr><td>Quién eres y tu foco actual</td><td>1-2 experiencias relevantes</td><td>Por qué este rol es el siguiente paso</td></tr></table>
+AwsEngineer::Carrera::Behavioral	MiPlantilla	¿Cómo responder "no estuviste de acuerdo con una decisión"?	Muestra cómo planteaste tus dudas con datos, quién tomó la decisión y cómo te comprometiste al 100% una vez decidida (disagree and commit).
+AwsEngineer::Carrera::Behavioral	MiPlantilla	¿Cuáles son red flags en una entrevista conductual?	<ul><li>Culpar a otros</li><li>Fallo sin aprendizaje</li><li>Respuestas vagas, todo "nosotros"</li><li>Hablar mal de empleadores previos</li><li>Debilidad falsa ("trabajo demasiado")</li></ul>
+AwsEngineer::Carrera::Behavioral	MiPlantilla	¿Qué preguntas hacerle al entrevistador?	<ul><li>¿Cómo se ve el éxito a 6 meses?</li><li>¿Cómo funciona el on-call?</li><li>¿Cómo se gestiona la deuda técnica?</li><li>¿Qué caminos de crecimiento hay?</li></ul>
+AwsEngineer::Carrera::Behavioral	MiPlantilla	¿Qué es el enfoque de "story bank"?	Preparar 5-6 historias fuertes en formato STAR; cada una se reformula para responder varias preguntas (proyecto difícil, conflicto, fallo, logro, aprendizaje).
+AwsEngineer::Python::Concurrencia::Interview	MiPlantilla	¿Qué es el GIL y por qué los hilos no paralelizan trabajo CPU?	El Global Interpreter Lock permite ejecutar bytecode Python en un solo hilo a la vez, así que tareas CPU-bound no usan varios cores. Se libera durante I/O, por eso los hilos sí ayudan en tareas I/O-bound.
+AwsEngineer::Python::Concurrencia::Interview	MiPlantilla	¿Por qué <code>count += 1</code> no es atómico?	Son tres operaciones (leer, sumar, escribir) que pueden intercalarse entre hilos, causando lost updates. Se protege con un lock o un tipo atómico.
+AwsEngineer::Python::Concurrencia::Interview	MiPlantilla	¿Diferencia entre Lock, RLock y Semaphore?	<table border="1" cellpadding="6"><tr><th>Lock</th><th>RLock</th><th>Semaphore</th></tr><tr><td>Mutex binario; re-adquirir el mismo hilo se bloquea</td><td>Reentrante; el mismo hilo adquiere N veces</td><td>Contador; hasta N titulares concurrentes</td></tr></table>
+AwsEngineer::Python::Concurrencia::Interview	MiPlantilla	¿Cuáles son las 4 condiciones de Coffman para deadlock?	<ul><li><b>Exclusión mutua</b> – recurso en uso exclusivo</li><li><b>Hold and wait</b> – retiene uno y espera otro</li><li><b>No preemption</b> – se libera solo voluntariamente</li><li><b>Espera circular</b> – ciclo de hilos esperándose</li></ul>
+AwsEngineer::Python::Concurrencia::Interview	MiPlantilla	¿Cómo prevenir un deadlock?	Romper una condición de Coffman: orden global de adquisición de locks, <code>acquire(timeout=...)</code>, un único lock grueso, o estructuras lock-free.
+AwsEngineer::Python::Concurrencia::Interview	MiPlantilla	¿Cómo implementar producer-consumer con buffer acotado?	<pre>q = queue.Queue(maxsize=10)  # backpressure
+q.put(item)   # bloquea si lleno
+q.get()       # bloquea si vacío
+q.put(None)   # sentinela para parar</pre>
+AwsEngineer::Java::Concurrencia::Interview	MiPlantilla	¿Por qué <code>count++</code> no es atómico en Java?	Compila a leer, incrementar y escribir (3 ops); bajo contención produce lost updates. Solución: <code>synchronized</code>, <code>AtomicInteger</code> o un <code>Lock</code>.
+AwsEngineer::Java::Concurrencia::Interview	MiPlantilla	¿Diferencia entre volatile, synchronized y AtomicInteger?	<table border="1" cellpadding="6"><tr><th></th><th>Visibilidad</th><th>Atomicidad</th></tr><tr><td>volatile</td><td>Sí</td><td>No</td></tr><tr><td>synchronized</td><td>Sí</td><td>Sí (bloque)</td></tr><tr><td>AtomicInteger</td><td>Sí</td><td>Sí (CAS)</td></tr></table>
+AwsEngineer::Java::Concurrencia::Interview	MiPlantilla	¿Qué es la relación happens-before en el JMM?	Si A happens-before B, los efectos de A son visibles para B. Ej: unlock HB siguiente lock, escritura volatile HB lectura posterior, <code>start()</code> HB el run, run HB el <code>join()</code>.
+AwsEngineer::Java::Concurrencia::Interview	MiPlantilla	¿Ventajas de ReentrantLock sobre synchronized?	<ul><li><code>tryLock()</code> y timeout (evita deadlock)</li><li>Adquisición interrumpible</li><li>Fairness configurable</li><li>Múltiples Condition</li></ul> Requiere <code>unlock()</code> en <code>finally</code>.
+AwsEngineer::Java::Concurrencia::Interview	MiPlantilla	¿Diferencia entre hilos y procesos en la JVM?	<table border="1" cellpadding="6"><tr><th>Hilo</th><th>Proceso</th></tr><tr><td>Heap compartido, barato, memoria compartida</td><td>Memoria aislada, caro, IPC</td></tr></table> La JVM usa hilos OS reales: paralelismo multicore real (sin GIL).
+AwsEngineer::Java::Concurrencia::Interview	MiPlantilla	¿Cómo implementar producer-consumer con BlockingQueue?	<pre>BlockingQueue&lt;Integer&gt; q =
+    new ArrayBlockingQueue&lt;&gt;(10); // acotada
+q.put(item);  // bloquea si lleno
+q.take();     // bloquea si vacío
+q.put(-1);    // poison pill</pre>
+AwsEngineer::BaseDatos::SQL::Interview	MiPlantilla	¿Qué significa una gran diferencia entre rows estimadas y actuales en EXPLAIN ANALYZE?	Estadísticas desactualizadas: el planner estima mal y elige un mal plan. Solución: ejecutar <pre>ANALYZE tabla;</pre>
+AwsEngineer::BaseDatos::SQL::Interview	MiPlantilla	¿Qué es un predicado sargable?	Un predicado que puede usar un index range scan porque la columna está "desnuda" (sin función ni cast) y comparada con un literal del mismo tipo.
+AwsEngineer::BaseDatos::SQL::Interview	MiPlantilla	¿Por qué un índice NO se usa?	<ul><li>Función o cast sobre la columna (<code>LOWER(col)</code>)</li><li>Wildcard inicial: <code>LIKE '%x'</code></li><li>Baja selectividad (90% filas coinciden)</li><li>Cast implícito de tipo distinto</li><li><code>OR</code> entre columnas distintas</li></ul>
+AwsEngineer::BaseDatos::SQL::Interview	MiPlantilla	¿Qué causa el problema N+1 en un ORM?	Una relación lazy accedida dentro de un bucle: 1 query para los padres + 1 query por cada hijo. Se arregla con eager loading (joinedload), batching con IN, o JOIN.
+AwsEngineer::BaseDatos::SQL::Interview	MiPlantilla	¿Diferencia entre ROW_NUMBER, RANK y DENSE_RANK?	<table border="1" cellpadding="6"><tr><th>Func</th><th>Empates</th><th>scores 90,80,80,70</th></tr><tr><td>ROW_NUMBER</td><td>nunca</td><td>1 2 3 4</td></tr><tr><td>RANK</td><td>comparten, salta</td><td>1 2 2 4</td></tr><tr><td>DENSE_RANK</td><td>comparten, sin salto</td><td>1 2 2 3</td></tr></table>
+AwsEngineer::BaseDatos::SQL::Interview	MiPlantilla	¿Cuáles son las dos partes de un CTE recursivo?	<ul><li><b>Anchor</b> – filas base (raíz del árbol)</li><li><b>Término recursivo</b> – se une de vuelta al CTE con UNION ALL hasta que no aparezcan filas nuevas</li></ul>
+AwsEngineer::BaseDatos::SQL::Interview	MiPlantilla	¿Qué anomalía previene cada nivel de aislamiento?	<table border="1" cellpadding="6"><tr><th>Anomalía</th><th>Bloqueada desde</th></tr><tr><td>Dirty read</td><td>READ COMMITTED</td></tr><tr><td>Non-repeatable read</td><td>REPEATABLE READ</td></tr><tr><td>Phantom read</td><td>SERIALIZABLE</td></tr></table>
+AwsEngineer::BaseDatos::SQL::Interview	MiPlantilla	¿Qué es un dirty read vs non-repeatable read vs phantom read?	<ul><li><b>Dirty</b> – leer un cambio no confirmado de otra tx</li><li><b>Non-repeatable</b> – misma fila, valor distinto al releer</li><li><b>Phantom</b> – misma query, aparecen filas nuevas</li></ul>
+AwsEngineer::BaseDatos::SQL::Interview	MiPlantilla	¿Qué causa un deadlock y cómo se evita?	Causa: espera circular de locks entre transacciones. El DB detecta el ciclo y aborta una víctima (40P01). Se evita bloqueando filas en orden consistente (ej. id ascendente) y con transacciones cortas; reintentar al fallar.
+AwsEngineer::BaseDatos::SQL::Interview	MiPlantilla	¿Diferencia entre locking pesimista y optimista?	<table border="1" cellpadding="6"><tr><th>Pesimista</th><th>Optimista</th></tr><tr><td>SELECT ... FOR UPDATE bloquea la fila</td><td>columna version comparada en el UPDATE</td></tr><tr><td>Alta contención</td><td>Baja contención (web)</td></tr></table>
+AwsEngineer::BaseDatos::SQL::Interview	MiPlantilla	¿Cómo borrar duplicados dejando uno (menor id)?	<pre>DELETE FROM users a
+USING users b
+WHERE a.email = b.email
+  AND a.id > b.id;</pre>
+AwsEngineer::BaseDatos::SQL::Interview	MiPlantilla	¿Cómo obtener el segundo salario más alto por departamento?	<pre>SELECT department, name, salary FROM (
+  SELECT department, name, salary,
+    DENSE_RANK() OVER (PARTITION BY department
+      ORDER BY salary DESC) rnk
+  FROM employees
+) t WHERE rnk = 2;</pre>
+AwsEngineer::BaseDatos::SQL::Interview	MiPlantilla	¿Cómo encontrar el segundo valor más alto global?	<pre>SELECT MAX(salary)
+FROM employees
+WHERE salary < (SELECT MAX(salary)
+                FROM employees);</pre>
+AwsEngineer::Web::HTTP::Interview	MiPlantilla	¿Diferencia entre 401 y 403?	<table border="1" cellpadding="6"><tr><th>401 Unauthorized</th><th>403 Forbidden</th></tr><tr><td>No autenticado (¿quién eres?)</td><td>Autenticado pero sin permiso</td></tr></table>
+AwsEngineer::Web::HTTP::Interview	MiPlantilla	¿Diferencia entre 400 y 422?	<b>400</b> – sintaxis inválida, el body no se puede parsear. <b>422</b> – body válido pero falla validación de negocio.
+AwsEngineer::Web::HTTP::Interview	MiPlantilla	¿Qué significan 502, 503 y 504?	<ul><li><b>502</b> – upstream devolvió respuesta inválida</li><li><b>503</b> – sin capacidad / mantenimiento</li><li><b>504</b> – upstream demasiado lento (timeout)</li></ul>
+AwsEngineer::Web::HTTP::Interview	MiPlantilla	¿Qué métodos HTTP son idempotentes?	GET, HEAD, PUT y DELETE. <b>POST y PATCH no</b> lo son. Idempotente = mismo efecto si se llama N veces.
+AwsEngineer::Web::HTTP::Interview	MiPlantilla	¿Por qué POST no es idempotente y DELETE sí?	Dos POST crean dos recursos distintos. Un segundo DELETE deja el recurso igual de borrado (204/404), mismo estado final.
+AwsEngineer::Web::HTTP::Interview	MiPlantilla	¿Para qué sirve un Idempotency-Key?	ID único por operación lógica. El servidor cachea la respuesta por clave; un reintento con la misma clave devuelve el resultado guardado sin reejecutar (ej: pagos).
+AwsEngineer::Web::HTTP::Interview	MiPlantilla	¿Dónde guardar un JWT en el navegador y su trade-off?	<table border="1" cellpadding="6"><tr><th>localStorage</th><th>Cookie httpOnly</th></tr><tr><td>Legible por JS → riesgo XSS</td><td>Oculto a JS → riesgo CSRF</td></tr></table> Mitigar: httpOnly + SameSite + TTL corto.
+AwsEngineer::Web::HTTP::Interview	MiPlantilla	¿Cuáles son los pasos del flujo OAuth2 Authorization Code?	<ul><li>App redirige a /authorize</li><li>Usuario hace login y consiente</li><li>Vuelve con ?code</li><li>App canjea code en /token → access_token</li><li>Llama API con Bearer token</li></ul>
+AwsEngineer::Web::HTTP::Interview	MiPlantilla	¿Qué dispara un preflight CORS (OPTIONS)?	Métodos como PUT/DELETE, headers personalizados o Content-Type application/json. CORS solo lo aplica el navegador, no servidor-a-servidor.
+AwsEngineer::Web::HTTP::Interview	MiPlantilla	¿Diferencia entre paginación offset y cursor?	<table border="1" cellpadding="6"><tr><th>Offset</th><th>Cursor/Keyset</th></tr><tr><td>Lenta en páginas profundas, inestable ante inserts, permite saltar página</td><td>Rápida (usa índice), estable, solo secuencial</td></tr></table>
+AwsEngineer::Web::HTTP::Interview	MiPlantilla	¿Qué header acompaña a un 429?	<b>Retry-After</b> – segundos (o fecha HTTP) a esperar antes de reintentar. Opcional: X-RateLimit-Limit/Remaining/Reset.
+AwsEngineer::Calidad::Troubleshooting	MiPlantilla	¿Cuál es el bucle sistemático de troubleshooting?	Reproducir → Aislar → Hipótesis → Probar → Corregir → Verificar → Post-mortem. Cambiar UNA variable por paso.
+AwsEngineer::Calidad::Troubleshooting	MiPlantilla	"El servicio está lento", ¿qué haces primero?	Métricas antes de adivinar: latencia p50/p95/p99, error rate, saturación. Luego acotar capa (LB→App→DB→downstream) y revisar traces/logs del path lento.
+AwsEngineer::Calidad::Troubleshooting	MiPlantilla	¿Qué indica p99 alta pero p50 normal?	Problema de cola (tail): pausa de GC, contención de locks, caché fría o un nodo malo. Si p50 también sube → problema sistémico de capacidad.
+AwsEngineer::Calidad::Troubleshooting	MiPlantilla	¿Cuándo usar el método USE vs RED?	<table border="1" cellpadding="6"><tr><th>USE</th><th>RED</th></tr><tr><td>Recursos/infra: Utilization, Saturation, Errors</td><td>Servicios/requests: Rate, Errors, Duration</td></tr></table>
+AwsEngineer::Calidad::Troubleshooting	MiPlantilla	¿Qué revisar primero ante pool de conexiones agotado?	Conexiones activas vs máximo y queries lentas o sin cerrar. Fix: timeouts, cerrar conexiones, subir pool con moderación.
+AwsEngineer::Calidad::Troubleshooting	MiPlantilla	¿Cuál es el orden en respuesta a incidentes?	Mitigar primero (rollback / escalar / feature-flag), luego root-cause con calma, después post-mortem sin culpas. Restaurar servicio > encontrar la causa.
+AwsEngineer::Calidad::Troubleshooting	MiPlantilla	¿Qué señal mirar primero según el cuello de botella?	<ul><li><b>CPU</b> – run queue, load avg, flame graph</li><li><b>Memoria</b> – heap/RSS, GC, OOM</li><li><b>IO</b> – disk await, queries lentas</li><li><b>Red</b> – ancho de banda, packet loss</li></ul>

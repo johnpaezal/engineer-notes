@@ -131,6 +131,158 @@ asyncio.run(main())
 
 ---
 
+## Interview Essentials
+*Core concurrency questions explained*
+
+### The GIL
+*Why threads don't parallelize CPU*
+
+**GIL** – Global Interpreter Lock; one thread runs Python bytecode at a time  
+**Effect** – Threads can't use multiple cores for CPU-bound work  
+**I/O exception** – GIL released during blocking I/O, so threads help I/O-bound  
+**Bypass** – `multiprocessing` (separate interpreters) or C extensions release the GIL  
+
+```python
+import time
+from threading import Thread
+
+def burn():
+    x = 0
+    for _ in range(10_000_000):
+        x += 1
+
+# Usage
+start = time.time()
+threads = [Thread(target=burn) for _ in range(4)]
+for t in threads: t.start()
+for t in threads: t.join()
+print(time.time() - start)  # ~same as running 4x serially (GIL serializes)
+```
+
+---
+
+### Race Condition
+*Unsynchronized access corrupts state*
+
+**Race condition** – Result depends on unpredictable thread interleaving  
+**Cause** – `count += 1` is read → add → write (3 steps), not atomic  
+**Fix** – Guard the read-modify-write with a lock  
+
+```python
+import threading
+
+# BUGGY: lost updates, final value < 1_000_000
+counter = 0
+def bad():
+    global counter
+    for _ in range(100_000):
+        counter += 1            # read, +1, write — interleaves
+
+# FIXED
+lock = threading.Lock()
+def good():
+    global counter
+    for _ in range(100_000):
+        with lock:              # atomic section
+            counter += 1
+
+# Usage
+ts = [threading.Thread(target=good) for _ in range(10)]
+for t in ts: t.start()
+for t in ts: t.join()
+print(counter)  # exactly 1_000_000
+```
+
+---
+
+### Lock vs RLock vs Semaphore
+*Pick the right synchronization primitive*
+
+**Lock** – Binary mutex; same thread re-acquiring deadlocks  
+**RLock** – Reentrant; same thread can acquire N times (release N times)  
+**Semaphore** – Counter; allows up to N concurrent holders  
+**Event / Condition** – Signal/wait coordination between threads  
+
+```python
+import threading
+
+rlock = threading.RLock()       # recursive acquisition OK
+def outer():
+    with rlock:
+        inner()
+def inner():
+    with rlock:                 # would deadlock with plain Lock
+        pass
+
+sem = threading.Semaphore(3)    # max 3 concurrent
+def limited():
+    with sem:
+        pass                    # at most 3 threads here
+
+# Usage
+outer()
+```
+
+---
+
+### Deadlock — Coffman Conditions
+*Four conditions; break one to prevent*
+
+**Mutual exclusion** – Resource held exclusively  
+**Hold and wait** – Holds one resource, waits for another  
+**No preemption** – Resource only released voluntarily  
+**Circular wait** – Cycle of threads each waiting on the next  
+
+```python
+import threading
+
+a, b = threading.Lock(), threading.Lock()
+
+# BUGGY: T1 a→b, T2 b→a → circular wait
+# FIX: global lock ordering — always acquire a before b
+def transfer():
+    with a:
+        with b:                 # consistent order breaks circular wait
+            pass
+
+# Usage — also: timeouts (lock.acquire(timeout=1)) break hold-and-wait
+transfer()
+```
+
+**Prevention**: lock ordering, `acquire(timeout=...)`, single coarse lock, lock-free structures
+
+---
+
+### Producer-Consumer
+*Bounded queue decouples producers*
+
+**`queue.Queue`** – Thread-safe, built-in locking  
+**`maxsize`** – Bounds memory; `put` blocks when full (backpressure)  
+**Sentinel** – `None` signals consumers to stop  
+
+```python
+import threading, queue
+
+q = queue.Queue(maxsize=10)     # bounded buffer
+
+def producer():
+    for i in range(20):
+        q.put(i)                # blocks if full
+    q.put(None)                 # sentinel
+
+def consumer():
+    while (item := q.get()) is not None:
+        q.task_done()
+
+# Usage
+p = threading.Thread(target=producer)
+c = threading.Thread(target=consumer)
+p.start(); c.start()
+p.join(); c.join()
+```
+
+---
+
 ## Best Practices
 
 **GIL** – Use `multiprocessing` for CPU-bound, `threading` for I/O-bound  
