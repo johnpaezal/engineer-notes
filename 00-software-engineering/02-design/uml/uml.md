@@ -1,16 +1,38 @@
 # UML Diagrams Overview
 
-UML (Unified Modeling Language) defines 14 diagram types, split into **structural** (static) and **behavioral** (dynamic).
+**UML** – Unified Modeling Language: standard notation to model software systems.
+
+- **Total**: 14 diagram types
+- **Structural** (7): static structure of the system
+- **Behavioral** (7): dynamic behavior over time
 
 ## Most Important
 
 The five most used in practice:
 
-1. Class
-2. Use Case
-3. Sequence
-4. Activity
-5. State Machine
+1. [Class](#class-diagram)
+2. [Use Case](#use-case-diagram)
+3. [Sequence](#sequence-diagram)
+4. [Activity](#activity-diagram)
+5. [State Machine](#state-machine-diagram)
+
+---
+
+## When to Use Which
+
+*Which diagram to pick for what you model*
+
+| You need to model... | Use |
+|---|---|
+| Class structure and relationships | [Class](#class-diagram) |
+| Requirements and system actors | [Use Case](#use-case-diagram) |
+| Message flow between objects | [Sequence](#sequence-diagram) |
+| Business process or workflow | [Activity](#activity-diagram) |
+| Object lifecycle and states | [State Machine](#state-machine-diagram) |
+| Software components and dependencies | [Component](#component-diagram) |
+| Physical deployment on hardware | [Deployment](#deployment-diagram) |
+
+---
 
 ## Structural Diagrams
 
