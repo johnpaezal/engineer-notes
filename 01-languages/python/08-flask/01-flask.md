@@ -1,38 +1,38 @@
 # Flask
-*Micro-framework web minimalista para Python*
+*Minimalist Python web micro-framework*
 
-## ¿Qué es Flask?
+## What is Flask?
 
-**Flask** es un micro-framework web para Python, diseñado para ser **simple, ligero y fácil de aprender**.
+**Flask** is a Python web micro-framework designed to be **simple, lightweight, and easy to learn**.
 
-A diferencia de Django (que viene con todo incluido), Flask te da lo mínimo necesario para levantar una aplicación web y tú decides qué agregar.
+Unlike Django (batteries-included), Flask gives you the bare minimum to spin up a web app and lets you choose what to add.
 
 ### Flask vs FastAPI vs Django
 
 | | Flask | FastAPI | Django |
 |---|---|---|---|
-| Complejidad | Muy baja | Media | Alta |
-| Velocidad de aprendizaje | Rápida | Media | Lenta |
-| Rendimiento | Medio | Alto (async) | Medio |
-| Validación automática | No | Sí (Pydantic) | Parcial |
-| Documentación automática | No | Sí (Swagger) | No |
-| Ideal para | Proyectos simples, prototipos, scripts web | APIs modernas | Aplicaciones grandes con todo integrado |
+| Complexity | Very low | Medium | High |
+| Learning curve | Fast | Medium | Slow |
+| Performance | Medium | High (async) | Medium |
+| Auto validation | No | Yes (Pydantic) | Partial |
+| Auto docs | No | Yes (Swagger) | No |
+| Best for | Simple projects, prototypes, web scripts | Modern APIs | Large all-in-one apps |
 
-**Usa Flask cuando**:
-- Quieres algo simple y rápido de levantar
-- El proyecto es pequeño o mediano
-- Estás aprendiendo desarrollo web con Python
-- Necesitas una API sencilla o un prototipo
-- No necesitas las capas extras de Django o FastAPI
+**Use Flask when**:
+- You want something simple and quick to set up
+- The project is small or medium
+- You're learning Python web development
+- You need a simple API or a prototype
+- You don't need the extra layers of Django or FastAPI
 
-**No uses Flask cuando**:
-- Necesitas validación automática de datos (usa FastAPI)
-- El proyecto es grande y necesita estructura clara desde el inicio (usa Django)
-- Necesitas alto rendimiento con código async (usa FastAPI)
+**Don't use Flask when**:
+- You need automatic data validation (use FastAPI)
+- The project is large and needs clear structure from day one (use Django)
+- You need high performance with async code (use FastAPI)
 
 ---
 
-## Instalación
+## Install
 
 ```bash
 pip install flask
@@ -40,7 +40,7 @@ pip install flask
 
 ---
 
-## Hola Mundo
+## Hello World
 
 ```python
 from flask import Flask
@@ -49,7 +49,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return 'Hola Mundo'
+    return 'Hello World'
 
 if __name__ == '__main__':
     app.run(debug=True)
@@ -60,52 +60,52 @@ python app.py
 # → http://localhost:5000
 ```
 
-`debug=True` → recarga automática al guardar cambios, muestra errores detallados. **Nunca usar en producción.**
+`debug=True` → auto-reload on save, detailed error pages. **Never use in production.**
 
 ---
 
-## Rutas (Routes)
+## Routes
 
 ```python
 from flask import Flask
 
 app = Flask(__name__)
 
-# Ruta básica
+# Basic route
 @app.route('/users')
 def get_users():
-    return 'Lista de usuarios'
+    return 'User list'
 
-# Parámetro en URL
+# URL parameter
 @app.route('/users/<int:user_id>')
 def get_user(user_id):
-    return f'Usuario {user_id}'
+    return f'User {user_id}'
 
-# Parámetro de texto
+# String parameter
 @app.route('/products/<string:slug>')
 def get_product(slug):
-    return f'Producto: {slug}'
+    return f'Product: {slug}'
 
-# Múltiples métodos HTTP
+# Multiple HTTP methods
 @app.route('/users', methods=['GET', 'POST'])
 def users():
     if request.method == 'POST':
-        return 'Crear usuario'
-    return 'Listar usuarios'
+        return 'Create user'
+    return 'List users'
 ```
 
-### Tipos de parámetros en URL
+### URL parameter types
 
-| Tipo | Ejemplo | Convierte a |
+| Type | Example | Converts to |
 |---|---|---|
 | `<string:name>` | `/users/alice` | str |
 | `<int:id>` | `/users/42` | int |
 | `<float:value>` | `/price/9.99` | float |
-| `<path:subpath>` | `/files/a/b/c` | str con "/" |
+| `<path:subpath>` | `/files/a/b/c` | str with "/" |
 
 ---
 
-## Request – Leer datos de la petición
+## Request – Read request data
 
 ```python
 from flask import Flask, request
@@ -129,31 +129,31 @@ def create_user():
     # Headers
     token = request.headers.get('Authorization')
 
-    return f'Usuario creado: {name}'
+    return f'User created: {name}'
 ```
 
 ---
 
-## Response – Devolver datos
+## Response – Return data
 
 ```python
 from flask import Flask, jsonify, make_response
 
 app = Flask(__name__)
 
-# Devolver JSON
+# Return JSON
 @app.route('/users/<int:user_id>')
 def get_user(user_id):
     user = {'id': user_id, 'name': 'Alice', 'email': 'alice@example.com'}
     return jsonify(user)
 
-# Devolver con status code explícito
+# Return with explicit status code
 @app.route('/users', methods=['POST'])
 def create_user():
     user = {'id': 1, 'name': 'Alice'}
     return jsonify(user), 201
 
-# Respuesta personalizada (headers, cookies, etc.)
+# Custom response (headers, cookies, etc.)
 @app.route('/custom')
 def custom():
     response = make_response(jsonify({'message': 'ok'}), 200)
@@ -163,14 +163,14 @@ def custom():
 
 ---
 
-## API REST completa (ejemplo)
+## Complete REST API (example)
 
 ```python
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-# Base de datos en memoria (solo para ejemplo)
+# In-memory database (example only)
 users = {}
 next_id = 1
 
@@ -221,7 +221,7 @@ if __name__ == '__main__':
 
 ---
 
-## Manejo de Errores
+## Error Handling
 
 ```python
 from flask import Flask, jsonify
@@ -229,22 +229,22 @@ from werkzeug.exceptions import NotFound
 
 app = Flask(__name__)
 
-# Manejador para 404
+# Handler for 404
 @app.errorhandler(404)
 def not_found(error):
     return jsonify({'error': 'Not found'}), 404
 
-# Manejador para 400
+# Handler for 400
 @app.errorhandler(400)
 def bad_request(error):
     return jsonify({'error': 'Bad request'}), 400
 
-# Manejador para 500
+# Handler for 500
 @app.errorhandler(500)
 def internal_error(error):
     return jsonify({'error': 'Internal server error'}), 500
 
-# Lanzar error desde una ruta
+# Raise error from a route
 @app.route('/users/<int:user_id>')
 def get_user(user_id):
     user = db.get(user_id)
@@ -256,10 +256,10 @@ def get_user(user_id):
 ---
 
 ## Blueprints
-*Organizar rutas en módulos separados*
+*Organize routes into separate modules*
 
 ```
-proyecto/
+project/
 ├── app.py
 └── routes/
     ├── __init__.py
@@ -309,7 +309,7 @@ if __name__ == '__main__':
 
 ---
 
-## Variables de Entorno y Configuración
+## Environment Variables and Config
 
 ```python
 import os
@@ -317,7 +317,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-# Cargar configuración desde variables de entorno
+# Load config from environment variables
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret')
 app.config['DATABASE_URL'] = os.getenv('DATABASE_URL')
 app.config['DEBUG'] = os.getenv('FLASK_ENV') == 'development'
@@ -325,24 +325,24 @@ app.config['DEBUG'] = os.getenv('FLASK_ENV') == 'development'
 
 ```bash
 # .env
-SECRET_KEY=mi-clave-secreta
+SECRET_KEY=my-secret-key
 DATABASE_URL=postgresql://user:pass@localhost/mydb
 FLASK_ENV=development
 ```
 
 ```bash
-# Instalar python-dotenv para cargar .env
+# Install python-dotenv to load .env
 pip install python-dotenv
 ```
 
 ```python
 from dotenv import load_dotenv
-load_dotenv()  # cargar .env antes de iniciar la app
+load_dotenv()  # load .env before starting the app
 ```
 
 ---
 
-## Conectar con Base de Datos (SQLAlchemy)
+## Connecting to a Database (SQLAlchemy)
 
 ```bash
 pip install flask-sqlalchemy
@@ -353,10 +353,10 @@ from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'  # o postgresql://...
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'  # or postgresql://...
 db = SQLAlchemy(app)
 
-# Modelo
+# Model
 class User(db.Model):
     id    = db.Column(db.Integer, primary_key=True)
     name  = db.Column(db.String(100), nullable=False)
@@ -365,11 +365,11 @@ class User(db.Model):
     def to_dict(self):
         return {'id': self.id, 'name': self.name, 'email': self.email}
 
-# Crear tablas
+# Create tables
 with app.app_context():
     db.create_all()
 
-# CRUD con SQLAlchemy
+# CRUD with SQLAlchemy
 @app.route('/users', methods=['GET'])
 def get_users():
     users = User.query.all()
@@ -393,12 +393,12 @@ def delete_user(user_id):
 
 ---
 
-## Estructura de Proyecto Recomendada
+## Recommended Project Structure
 
 ```
-mi-api/
-├── app.py              ← punto de entrada
-├── config.py           ← configuración
+my-api/
+├── app.py              ← entry point
+├── config.py           ← configuration
 ├── models/
 │   ├── __init__.py
 │   └── user.py
@@ -411,48 +411,48 @@ mi-api/
 
 ---
 
-## Correr en Producción
+## Running in Production
 
 ```bash
-# Instalar Gunicorn (servidor WSGI para producción)
+# Install Gunicorn (WSGI server for production)
 pip install gunicorn
 
-# Correr con Gunicorn (4 workers)
+# Run with Gunicorn (4 workers)
 gunicorn -w 4 -b 0.0.0.0:8000 app:app
 ```
 
-**Nunca usar `app.run(debug=True)` en producción.**
+**Never use `app.run(debug=True)` in production.**
 
 ---
 
-## Comandos útiles
+## Useful Commands
 
 ```bash
-# Instalar dependencias
+# Install dependencies
 pip install flask flask-sqlalchemy python-dotenv
 
-# Guardar dependencias
+# Save dependencies
 pip freeze > requirements.txt
 
-# Instalar dependencias desde archivo
+# Install from file
 pip install -r requirements.txt
 
-# Correr en desarrollo
+# Run in development
 flask run
-# o
+# or
 python app.py
 
-# Especificar puerto
+# Specify port
 flask run --port 8080
 ```
 
 ---
 
-## Resumen
+## Summary
 
-Flask es el framework más fácil de aprender en Python para hacer APIs y aplicaciones web. Es ideal cuando:
-- Quieres construir algo rápido sin complicarte
-- Estás aprendiendo
-- El proyecto es pequeño o un prototipo
+Flask is the easiest Python framework to learn for building APIs and web apps. Ideal when:
+- You want to build something quickly without overhead
+- You're learning
+- The project is small or a prototype
 
-Para proyectos más serios donde necesitas validación automática de datos, documentación automática y mejor rendimiento, considera migrar a **FastAPI**.
+For more serious projects that need automatic data validation, auto-generated docs, and better performance, consider migrating to **FastAPI**.

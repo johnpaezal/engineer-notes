@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "WebSearch",
-      "Bash(cd /home/jopaeza/home-ubuntu/engineer-notes/UML/images && rm -f *:Zone.Identifier && ls)"
+      "Bash(cd /home/jopaeza/home-ubuntu/engineer-notes/UML/images && rm -f *:Zone.Identifier && ls)",
+      "Bash(sort -k2)"
     ],
     "additionalDirectories": [
       "/home/jopaeza/home-ubuntu/engineer-notes"

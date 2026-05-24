@@ -31,9 +31,57 @@ If a concept requires a diagram that markdown cannot render well (2D matrices, d
 Every time a new topic is created or updated, immediately add the corresponding Anki cards to `anki-aws-engineer.txt`. Do not wait for the user to ask.
 
 - Template and format reference: `.claude/PLANTILLA_ANKI.txt`
-- Deck hierarchy: `AwsEngineer::Area::Tema::Subtema`
-- Vary card types: text, `<ul>` lists, `<table>`, `<pre>` for code
-- One idea per card, question on front with `¿...?`, minimal answer on back
+- Goal of the deck: **recognize that X exists and know its purpose** — not memorize syntax or details.
+
+### Deck hierarchy
+
+- **Mirror of the repo folder structure**, in English, PascalCase: `AwsEngineer::<Area>::<Topic>::<Subtopic>`
+- One deck per note file. Examples:
+  - `01-languages/python/01-core/control-flow.md` → `AwsEngineer::Languages::Python::Core::ControlFlow`
+  - `06-cloud/aws/02-compute/ec2.md` → `AwsEngineer::Cloud::AWS::Compute::EC2`
+- Top-level areas: `SoftwareEngineering`, `Languages`, `Infrastructure`, `Databases`, `Web`, `Tooling`, `Cloud`, `Automation`, `Career`, `SystemDesign`
+
+### Card types
+
+For each topic, generate **3–6 atomic cards** chosen from:
+
+- **Existence** – `What is X?` → 1 line, what it is and what category
+- **Purpose** – `What is X used for?` → the real problem it solves
+- **Key Element** – `What is <element> of X?` → **one card per element** (never a bulk list)
+- **When to use** – `When to use X vs Y?` → short `<table>` comparison
+- **How it works** – `How does X work?` → 1-line mechanism (only if the internals matter)
+- **Gotcha** – `Key gotcha about X?` → common pitfall, one line
+- **Shape** – `What does X look like?` → minimal `<pre>` skeleton (not full code)
+
+### Atomic rules (mandatory)
+
+- **One idea per card.** If a concept has 5 sub-elements (e.g., DynamoDB: Partition Key, Sort Key, Item, Attribute, GSI/LSI), create **5 separate cards**, not one card with a bulleted list.
+- **Lists with 4+ items are forbidden** — split into N atomic cards.
+- **Tables only when the idea *is* the comparison** (X vs Y).
+
+### Wording rules
+
+- **All cards in English.** Front uses `What is...?` / `What does...?` / `When to use...?` / `How does...?`
+- **Clarity over brevity**: if the concept name exists in multiple contexts (loop, class, list, lambda, mock, queue…), the question must include the language/domain. Examples:
+  - ❌ `What is a class?` → ✅ `What is a class in Python?`
+  - ❌ `What is a Lambda?` → ✅ `What is a Java lambda?` (and separately `What is AWS Lambda?`)
+  - ❌ `What is a Queue?` → ✅ `What is a Queue (data structure)?` (and separately `What is AWS SQS?`)
+- **Minimal answers**: 1–2 lines max. Use `<code>` for inline terms, `<pre>` for shape skeletons, `<table border="1" cellpadding="6">` for comparisons.
+
+### Technical constraints (Anki TSV format)
+
+- Format per line: `Deck::Path\tMiPlantilla\tFront\tBack` (tab-separated, exactly 4 columns).
+- **No raw newlines inside `<pre>` blocks** — collapse multi-line code with `<br>` so each card is one physical line. A literal newline in the back will break the TSV import.
+- HTML allowed: `<ul><li>`, `<table>`, `<pre>`, `<code>`, `<b>`, `<br>`. Always close every tag.
+- Never use backticks `` ` `` in answers — use `<code>` instead.
+
+### No-duplication rule
+
+- Before adding a card, check if the concept already exists in another deck. If it does, **link via the note, don't duplicate in the deck.**
+- Canonical placement priority for shared concepts:
+  - AWS services → `Cloud::AWS::<Category>::<Service>` (not in certification decks)
+  - Patterns (Circuit Breaker, Saga, Repository) → `SoftwareEngineering::Architecture::Patterns` or `SystemDesign::Patterns`, never both
+  - Generic principles (SRP, DRY, KISS) → `SoftwareEngineering::Design::CleanCode` only
 
 ## Folder Structure Rules
 
